@@ -6,9 +6,10 @@ namespace Blocky.Props;
 
 public static class Debug {
 
+    const int edgeWidth = 1; // GenGrid.NoBuildEdgeWidth = 10
+
     static void spawnAll(){
         var map = Find.CurrentMap;
-        var edgeWidth = GenGrid.NoBuildEdgeWidth;
         var allDefs = DefDatabase<ThingDef>.AllDefsListForReading
             .FindAll(d => d.modContentPack == ModConfig.Settings.Mod.Content && d is BuildableDef )
             .OrderBy(d => d.designatorDropdown?.defName )
@@ -38,7 +39,6 @@ public static class Debug {
     [DebugAction("Blocky.Props", "Spawn all!", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
     private static void SpawnAll(){
         var map = Find.CurrentMap;
-        var edgeWidth = GenGrid.NoBuildEdgeWidth;
         int dx = 16;
         int dy = 10;
 
