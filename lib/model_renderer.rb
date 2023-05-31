@@ -49,8 +49,8 @@ class ModelRenderer
     # move image down if it's not full height (stonecutter, enchanting_table, end_portal_frame*)
     if y != 0
       img = Image.new( width: 64, height: 64 )
-      img.copy_from(dst, src_height: 32, dst_y: y)
-      img.copy_from(dst, src_y: 32+y, dst_y: 32)
+      img.copy_from dst, src_height: 32, dst_y: y*2
+      img.copy_from dst, src_y: 32+y*2,  dst_y: 32+y*2
       dst = img
     end
 
