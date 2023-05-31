@@ -13,7 +13,7 @@ class Model
   CACHE = {}
   CUSTOM_RENDERERS = {}
 
-  attr_reader :key, :textures, :elements
+  attr_reader :key, :textures, :elements, :name
   attr_accessor :render_type, :abstract, :debug
 
   def initialize key, data
@@ -23,8 +23,12 @@ class Model
     @textures = data['textures'].dup || {}
     @elements = data['elements'].dup || []
     @abstract = false
-    name = @key.sub("block/", "")
-    @render_type = CONFIG.render_types.find{ |x| x[0].match(name) }&.last&.to_sym
+    @name = @key.sub("block/", "")
+    @render_type = CONFIG.render_types.find{ |x| x[0].match(@name) }&.last&.to_sym
+  end
+
+  def abstract?
+    @abstract
   end
 
   def self.renders *keys
@@ -97,7 +101,8 @@ class Model
     img = parent ? parent.render_side(side, tex_root: tex_root) : Image.new(width: 16, height: 16)
     return nil if img.nil?
 
-    els = elements #.sort_by{|el| el.dig('to', 1) } # kinda z-index
+    # kinda z-index
+    els = elements.sort_by(&side.z_sort_proc)
     els.each do |el|
       if (face = el.dig('faces', side.to_s))
         tex = resolve_and_load_texture(face['texture'], tex_root)
@@ -110,12 +115,8 @@ class Model
           dw = [el.dig('to', ax1) - el.dig('from', ax1), 16].min.to_i
           dh = [el.dig('to', ax2) - el.dig('from', ax2), 16].min.to_i
 
-          if dh < 16
-            dy1 = 16-dy-dh
-            #puts "[d] dy=#{dy}, dh=#{dh} => #{dy1}"
-            dy = dy1
-            #sy = 16-sy-sh
-          end
+          # original coords are from bottom left corner, but ZPNG's are from top left
+          dy = 16-dy-dh if dh < 16
 
           sx = dx
           sy = dy
@@ -138,17 +139,9 @@ class Model
                   )
           end
 
-          # XXX do we need to mirror if coords are in reverse order?
-
           subtex = tex.cropped x: sx, y: sy, width: sw, height: sh
           subtex = subtex.rotated(face['rotation']) if face['rotation']
           img.copy_from(subtex, dst_x: dx, dst_y: dy, dst_width: dw, dst_height: dh)
-#          img.copy_from(tex,
-#                        src_x: sx,     src_y: sy,
-#                        dst_x: dx,     dst_y: dy,
-#                        src_width: sw, src_height: sh,
-#                        dst_width: dw, dst_height: dh,
-#                       )
         else
           tex = tex.rotated(face['rotation']) if face['rotation']
           img.copy_from(tex)

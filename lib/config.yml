@@ -1,22 +1,26 @@
 assets_dir: ~/games/minecraft/assets
 render_types:
-  _log$: 3d_model
   _log_horizontal$: table
-  bamboo\d_age: 3d_model
   barrel: table
   beacon: table # FIXME
   beehive|bee_nest: table
-  cactus: 3d_model
+  bookshelf: table
+  brewing_stand: flat
+  carpet$: flat
   cauldron: table_noborder
-  cocoa_stage: 3d_model
   ^composter$: table
+  campfire: side_south
+  ^potted_: side_south
   dispenser: table
   dropper: table
-    #  fence: 3d_model
+  dragon_egg: side_south
+  fence: side_south
   furnace: table
   glass$: flat
+  glazed_terracotta: flat
   hay_block: table
-  hopper: table
+  item_frame: side_south
+  farmland: flat
   jukebox: table
   loom: table
   note_block: table
@@ -26,6 +30,8 @@ render_types:
   ^(pumpkin|carved_pumpkin|jack_o_lantern|melon)$: table
   redstone_lamp: table
   respawn_anchor$: table
+  ^repeater: flat
+  ^comparator: flat
   scaffolding_stable: table
   sculk_shrieker: table
   respawn_anchor: table
@@ -36,6 +42,7 @@ render_types:
 
 ignore:
   - ^air$
+  - ^bell
   - ^block$
   - ^light_\d
   - ^template
@@ -55,6 +62,8 @@ ignore:
   - candle
   - chain
   - chiseled_bookshelf
+  - chorus_plant_noside\d
+  - composter_contents
   - dispenser_vertical
   - dropper_vertical
   - glass_pane_post
@@ -63,6 +72,7 @@ ignore:
   - moving_piston$
   - pane_noside$
   - sea_pickle
+  - _sign$ # rendered as entity
   - slab
   - stairs
   - turtle_egg

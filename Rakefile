@@ -11,8 +11,8 @@ task :render, :model do |_, args|
   m = Model.find(key)
 
   r = ModelRenderer.new(m)
-  %w'north south east west'.each do |side|
-    img = r.render(Side[side])
+  Side.each_nsew do |side|
+    img = r.render(side)
     img.save(fname="#{side}.png")
     puts "[=] #{fname}"
   end
@@ -28,8 +28,8 @@ namespace :render do
     key = "block/#{key}" unless key['block/']
     m = Model.find(key)
 
-    %w'up north south east west'.each do |side|
-      img = m.render_side(Side[side]).scaled(4)
+    Side.each do |side|
+      img = m.render_side(side).scaled(4)
       img.save(fname="#{side}.png")
       puts "[=] #{fname}"
     end

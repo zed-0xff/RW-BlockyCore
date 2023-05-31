@@ -8,9 +8,25 @@ class ModelRenderer
   def initialize model
     @model = model
     @mask_fname = 'mask4.png'
+    @border = false
+  end
+
+  # slow
+  def detect_render_type
+    images = Side.all.map{ |side| model.render_side(side) }
+    usz = images.map(&:export).uniq.size
+    if usz == 1 || (usz == 2 && images.any?(&:empty?))
+      model.render_type = :flat
+    elsif images.any?{ |img| img.pixels.any?(&:transparent?) }
+      model.render_type = :"3d_model"
+    else
+      model.render_type = :table_noborder
+    end
   end
 
   def render side = nil
+    detect_render_type if model.render_type.nil?
+
     type = model.render_type || :flat
     side ? send("render_#{type}", side) : send("render_#{type}")
   end
@@ -20,11 +36,26 @@ class ModelRenderer
 
     %w'up north south east west'.each do |side|
       img = model.render_side(Side[side])
-      next if img.nil? || img.pixels.all?(&:transparent?)
+      next if img.nil? || img.empty?
 
       return img.scaled(4)
     end
     nil
+  end
+
+  def render_wall side = Side.north
+    dst = Image.new( width: 64, height: 64 )
+    up_rotated = model.render_top(side)
+    dst.copy_from up_rotated, dst_width: 64, dst_height: 16
+    side_tex = model.render_side(side)
+    dst.copy_from side_tex, dst_width: 64, dst_height: 48, dst_y: 16
+    @mask_fname = 'mask_bottom48.png'
+    mask!(dst, 16)
+    dst
+  end
+
+  def render_side_south
+    render_flat Side.south
   end
 
   def render_table_noborder side = Side.north
@@ -33,32 +64,33 @@ class ModelRenderer
   end
 
   def render_table side = Side.north
+    @border = true
     dst = Image.new( width: 64, height: 64 )
     up_rotated = model.render_top(side)
     dst.copy_from up_rotated, dst_width: 64, dst_height: 32
     side_tex = model.render_side(side)
     dst.copy_from side_tex, dst_width: 64, dst_height: 32, dst_y: 32
+    mask!(dst)
+    land_down_img(dst, side_tex)
+  end
 
+  # move _image_ down if it's not full height (stonecutter, enchanting_table, end_portal_frame*)
+  def land_down_img img, side_tex
     y = 0
     while side_tex.scanlines[y].pixels.all?(&:transparent?)
       y += 1
     end
-
-    mask!(dst)
-
-    # move image down if it's not full height (stonecutter, enchanting_table, end_portal_frame*)
     if y != 0
-      img = Image.new( width: 64, height: 64 )
-      img.copy_from dst, src_height: 32, dst_y: y*2
-      img.copy_from dst, src_y: 32+y*2,  dst_y: 32+y*2
-      dst = img
+      dst = Image.new( width: 64, height: 64 )
+      dst.copy_from img, src_height: 32, dst_y: y*2
+      dst.copy_from img, src_y: 32+y*2,  dst_y: 32+y*2
+      img = dst
     end
-
-    dst
+    img
   end
 
   # move _texture_ down if it's not full height
-  def land_down src
+  def land_down_tex src
     y = src.height - 1
     while y > 0
       break if !src.scanlines[y].pixels.all?(&:transparent?)
@@ -74,11 +106,14 @@ class ModelRenderer
 
   # respect original proportions
   def render_3d_model side = Side.north
+    @mask_fname = 'mask4_noborder.png'
     dst = Image.new( width: 64, height: 64 )
-    up_rotated = land_down(model.render_top(side))
+    up_rotated = land_down_tex(model.render_top(side))
     dst.copy_from up_rotated, dst_width: 32, dst_height: 16, dst_x: 16, dst_y: 16
-    dst.copy_from model.render_side(side), dst_width: 32, dst_height: 32, dst_y: 32, dst_x: 16
-    dst
+    side_tex = model.render_side(side)
+    dst.copy_from side_tex, dst_width: 32, dst_height: 32, dst_y: 32, dst_x: 16
+    mask!(dst)
+    land_down_img(dst, side_tex)
   end
 
   def mask! dst, y0 = 0
@@ -95,7 +130,7 @@ class ModelRenderer
       end
     end
 
-    if y0 != 0
+    if y0 != 0 && @border
       64.times do |x|
         dst[x, 62] = Color::BLACK
         dst[x, 63] = Color::BLACK
