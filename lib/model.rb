@@ -5,14 +5,16 @@ require 'json'
 require 'zpng'
 
 require_relative 'config'
+require_relative 'side'
 
 class Model
   include ZPNG
 
   CACHE = {}
+  CUSTOM_RENDERERS = {}
 
   attr_reader :key, :textures, :elements
-  attr_accessor :render_type, :abstract
+  attr_accessor :render_type, :abstract, :debug
 
   def initialize key, data
     #@data = data
@@ -23,6 +25,12 @@ class Model
     @abstract = false
     name = @key.sub("block/", "")
     @render_type = CONFIG.render_types.find{ |x| x[0].match(name) }&.last&.to_sym
+  end
+
+  def self.renders *keys
+    keys.each do |k|
+      CUSTOM_RENDERERS[k] = self
+    end
   end
 
   def parent
@@ -36,7 +44,8 @@ class Model
 
   def self._load key
     fname = File.join(CONFIG.assets_dir, "minecraft", "models", key) + ".json"
-    Model.new(key, JSON.load_file(fname))
+    klass = CUSTOM_RENDERERS[key] || Model
+    klass.new(key, JSON.load_file(fname))
   end
 
   def _convert_uv fname, uv
@@ -52,14 +61,6 @@ class Model
     #dst.save "uv_#{w}x#{h}.png"
     dst
   end
-
-  SIDE2AXIS = {
-    up:    [0, 2],
-    north: [0, 1],
-    south: [0, 1],
-    east:  [2, 1],
-    west:  [2, 1],
-  }
 
   @@cached_textures = {}
 
@@ -86,29 +87,58 @@ class Model
 
   class NoTextureError < StandardError; end
 
-  def render_side side, tex_root = self
-    img = parent ? parent.render_side(side, tex_root) : Image.new(width: 16, height: 16)
+  def render_top for_side
+    render_side(Side.up).rotated(for_side.rotation)
+  end
+
+  def render_side side, tex_root: self, elements: self.elements
+    raise "Side expected" unless side.is_a?(Side)
+
+    img = parent ? parent.render_side(side, tex_root: tex_root) : Image.new(width: 16, height: 16)
     return nil if img.nil?
 
-    elements.each do |el|
+    els = elements #.sort_by{|el| el.dig('to', 1) } # kinda z-index
+    els.each do |el|
       if (face = el.dig('faces', side.to_s))
         tex = resolve_and_load_texture(face['texture'], tex_root)
         return nil if tex.nil? && @abstract
 
         if (uv=face['uv']) || el['from']
-          uv ||= [0, 0, 16, 16]
-          ax1, ax2 = SIDE2AXIS[side.to_sym]
-          sw = [(uv[2]-uv[0]).abs + 1, 16].min.to_i
-          sh = [(uv[3]-uv[1]).abs + 1, 16].min.to_i
-          dx = el.dig('from', ax1).to_i # might be a float! x_x
+          ax1, ax2 = side.axes
+          dx = el.dig('from', ax1).to_i # can be a float! x_x
           dy = el.dig('from', ax2).to_i
-          dw = [el.dig('to', ax1) - el.dig('from', ax1) + 1, 16].min.to_i
-          dh = [el.dig('to', ax2) - el.dig('from', ax2) + 1, 16].min.to_i
-          sx = [uv[0], uv[2]].min.to_i
-          sy = [uv[1], uv[3]].min.to_i # XXX do we need to mirror if coords are in reverse order?
+          dw = [el.dig('to', ax1) - el.dig('from', ax1), 16].min.to_i
+          dh = [el.dig('to', ax2) - el.dig('from', ax2), 16].min.to_i
 
-          # HACK: stonecutter
-          next if face['texture'] == "#saw"
+          if dh < 16
+            dy1 = 16-dy-dh
+            #puts "[d] dy=#{dy}, dh=#{dh} => #{dy1}"
+            dy = dy1
+            #sy = 16-sy-sh
+          end
+
+          sx = dx
+          sy = dy
+          sw = dw
+          sh = dh
+          if uv
+            sx = [uv[0], uv[2]].min.to_i
+            sy = [uv[1], uv[3]].min.to_i
+            sx2 = [uv[0], uv[2]].max.to_i
+            sy2 = [uv[1], uv[3]].max.to_i
+            sw = sx2-sx+1
+            sh = sy2-sy+1
+          end
+
+          if @debug
+            printf("[d] sx=%2d sy=%2d sw=%2d sh=%2d => dx=%2d dy=%2d dw=%2d dh=%2d tex=%-10s from=%-10s to=%-10s\n",
+                   sx, sy, sw, sh,
+                   dx, dy, dw, dh,
+                   face['texture'], el['from'], el['to']
+                  )
+          end
+
+          # XXX do we need to mirror if coords are in reverse order?
 
           subtex = tex.cropped x: sx, y: sy, width: sw, height: sh
           subtex = subtex.rotated(face['rotation']) if face['rotation']
@@ -126,7 +156,7 @@ class Model
       end
     end
 
-    if elements.empty? && textures['particle'] && tex_root == self
+    if img.pixels.all?(&:transparent?) && textures['particle'] && tex_root == self
       tex = resolve_and_load_texture(textures['particle'], tex_root)
       return nil if tex.nil? && @abstract
 
@@ -153,10 +183,15 @@ class Model
   end
 end
 
+Dir[File.join(File.dirname(__FILE__), "model", "*.rb")].each do |fn|
+  require fn
+end
+
 if __FILE__ == $0
   key = ARGV.first
   key = "block/#{key}" unless key['block/']
   m = Model.find key
+  m.debug = true
 
   x = m
   a = []
@@ -171,12 +206,8 @@ if __FILE__ == $0
     sides = [ARGV[1]]
   end
   sides.each do |d|
-    img = m.render_side(d).scaled(4)
+    img = m.render_side(Side[d]).scaled(4)
     img.save "#{d}.png"
     puts "[=] #{d}.png"
   end
-end
-
-Dir[File.join(File.dirname(__FILE__), "model", "*.rb")].each do |fn|
-  require fn
 end

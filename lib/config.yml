@@ -1,14 +1,21 @@
 assets_dir: ~/games/minecraft/assets
 render_types:
-  _log$: table
+  _log$: 3d_model
   _log_horizontal$: table
   bamboo\d_age: 3d_model
   barrel: table
+  beacon: table # FIXME
+  beehive|bee_nest: table
   cactus: 3d_model
-  cauldron: table
+  cauldron: table_noborder
+  cocoa_stage: 3d_model
+  ^composter$: table
   dispenser: table
   dropper: table
+    #  fence: 3d_model
   furnace: table
+  glass$: flat
+  hay_block: table
   hopper: table
   jukebox: table
   loom: table
@@ -16,9 +23,12 @@ render_types:
   observer: table
   piston: table
   portal_frame: table
+  ^(pumpkin|carved_pumpkin|jack_o_lantern|melon)$: table
   redstone_lamp: table
   respawn_anchor$: table
   scaffolding_stable: table
+  sculk_shrieker: table
+  respawn_anchor: table
   smoker: table
   stonecutter: table
   table: table
@@ -32,6 +42,7 @@ ignore:
   - ^stem_growth
   - ^stripped
   - ^orientable
+  - ^piston_base
   - ^piston_head
   - _[nsew]+$
   - _alt$

@@ -12,7 +12,7 @@ task :render, :model do |_, args|
 
   r = ModelRenderer.new(m)
   %w'north south east west'.each do |side|
-    img = r.render(side)
+    img = r.render(Side[side])
     img.save(fname="#{side}.png")
     puts "[=] #{fname}"
   end
@@ -29,7 +29,7 @@ namespace :render do
     m = Model.find(key)
 
     %w'up north south east west'.each do |side|
-      img = m.render_side(side).scaled(4)
+      img = m.render_side(Side[side]).scaled(4)
       img.save(fname="#{side}.png")
       puts "[=] #{fname}"
     end
