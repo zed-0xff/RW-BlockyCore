@@ -1,0 +1,60 @@
+assets_dir: ~/games/minecraft/assets
+render_types:
+  _log$: table
+  _log_horizontal$: table
+  bamboo\d_age: 3d_model
+  barrel: table
+  cactus: 3d_model
+  cauldron: table
+  dispenser: table
+  dropper: table
+  furnace: table
+  hopper: table
+  jukebox: table
+  loom: table
+  note_block: table
+  observer: table
+  piston: table
+  portal_frame: table
+  redstone_lamp: table
+  respawn_anchor$: table
+  scaffolding_stable: table
+  smoker: table
+  stonecutter: table
+  table: table
+  tnt: table
+
+ignore:
+  - ^air$
+  - ^block$
+  - ^light_\d
+  - ^template
+  - ^stem_growth
+  - ^stripped
+  - ^orientable
+  - ^piston_head
+  - _[nsew]+$
+  - _alt$
+  - _door_bottom
+  - _door_top
+  - _inventory$
+  - _open$ # opened doors/trapdoors
+  - _stem$
+  - cake
+  - candle
+  - chain
+  - chiseled_bookshelf
+  - dispenser_vertical
+  - dropper_vertical
+  - glass_pane_post
+  - glass_pane_side
+  - lectern
+  - moving_piston$
+  - pane_noside$
+  - sea_pickle
+  - slab
+  - stairs
+  - turtle_egg
+  - wall_(post|side)
+  - button$
+  - button_pressed$

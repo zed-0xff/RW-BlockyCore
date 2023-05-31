@@ -7,13 +7,25 @@ require 'zpng'
 include ZPNG
 
 class TextureConverter
-  def convert! top:, front: nil, side: nil, dst_fname:, flat: false, rotate_top: nil, rotate_front: nil, scale_x: nil, scale_y: nil
+  SCALE_X = 4
+  SCALE_Y = 2
+
+  def initialize debug: false, extra_tex: {}, render_type:
+    @debug = debug
+    @extra_tex = extra_tex
+    @render_type = render_type
+  end
+
+  def convert! top:, front: nil, side: nil, dst_fname:, flat: false, rotate_top: nil, rotate_front: nil, face: nil, top_face: nil
+    face ||= {}
+    top_face ||= {}
     rotate_top = normalize_rotate(rotate_top)
     rotate_front = normalize_rotate(rotate_front)
-    scale_x ||= SCALE_X
-    scale_y ||= SCALE_Y
+    scale_x = face[:scale_x] || SCALE_X
+    scale_y = face[:scale_y] || SCALE_Y
+    front ||= side
 
-    dst = ZPNG::Image.new :width => 64, :height => 64
+    dst = Image.new :width => 64, :height => 64
 
     if @extra_tex
       if (tex=@extra_tex.delete(:inside))
@@ -24,41 +36,72 @@ class TextureConverter
       end
     end
 
-    if flat
+    case @render_type
+    when :flat
       _scale(dst, top, 63, scale_x: scale_x, scale_y: scale_x) # equal scale
-    else
-      y1 = _scale(dst, front||side, 63, rotate: rotate_front, scale_x: scale_x, scale_y: scale_y)
+    when :table
+      # draw 2nd half - front
+      y1 = _scale(dst, front, 63, rotate: rotate_front, scale_x: scale_x, scale_y: scale_y)
       return unless y1
 
+      # draw 1st half - top
       y2 = _scale(dst, top, y1, rotate: rotate_top, scale_x: scale_x, scale_y: scale_y)
 
       if scale_x == 2
-        y1 = _scale(dst, front||side, 63, rotate: rotate_front, scale_x: scale_x, scale_y: scale_y, x0: 32)
+        y1 = _scale(dst, front, 63, rotate: rotate_front, scale_x: scale_x, scale_y: scale_y, x0: 32)
         y2 = _scale(dst, top, y1, rotate: rotate_top, scale_x: scale_x, scale_y: scale_y, x0: 32)
       end
 
       mask!(dst, y2) if y2 <= 0
+    when :model
+      scale_x = 2
+      if (uv=face['uv'])
+        front = _convert_uv(front, uv)
+      end
+      y1 = _scale(dst, front, 63, rotate: rotate_front, scale_x: scale_x, scale_y: scale_y)
+      return unless y1
+
+      if (uv=top_face['uv'])
+        top = _convert_uv(top, uv)
+      end
+      y2 = _scale(dst, top, y1, rotate: rotate_top, scale_x: scale_x, scale_y: scale_y)
+    else
+      raise "invalid render_type #{@render_type.inspect}"
     end
 
     dst.save dst_fname
     puts "[*] => #{dst_fname}" if @debug
   end
 
-  def self.convert_args! args, name, flat: false, debug: false, extra_tex: {}, faces: nil
+  def _convert_uv fname, uv
+    w = [(uv[2]-uv[0]).abs + 1, 16].min
+    h = [(uv[3]-uv[1]).abs + 1, 16].min
+    puts "[d] _convert_uv: w=#{w} h=#{h}" if @debug
+
+    return fname if w == 16 && h == 16
+
+    dst = Image.load(fname)
+      .crop(x: uv[0], y:uv[1], width: w, height: h.abs)
+    # TODO: mirror if negative h
+    #dst.save "uv_#{w}x#{h}.png"
+    dst
+  end
+
+  def self.convert_args! args, name, flat: false, debug: false, extra_tex: {}, faces: nil, render_type:
     faces ||= {}
     if args[:texture] == args[:top]
       args.delete(:texture)
     end
 
     if debug
-      puts "[d] #{name}: flat=#{flat} faces=#{faces && faces.size} args:"
+      puts "[d] #{name}: render_type=#{render_type} faces=#{faces && faces.size} args:"
       pp args
       puts "[d] faces:"
       pp faces
     end
 
     # flatten
-    if args.values.uniq.size == 1 && args.size > 1
+    if args.values.uniq.size == 1 && args.size > 1 && !faces.to_s['"uv"']
       args = {all: args.values.first}
     end
 
@@ -75,7 +118,7 @@ class TextureConverter
     FileUtils.mkdir_p dst_dir
     dst_fname = File.join(dst_dir, name.camelize) + ".png"
 
-    c = TextureConverter.new( debug: debug, extra_tex: extra_tex )
+    c = TextureConverter.new( debug: debug, extra_tex: extra_tex, render_type: render_type )
 
     #puts "[.] #{args}"
 
@@ -95,8 +138,8 @@ class TextureConverter
           rotate_top: rot_per_side[side],
           rotate_front: face['rotation'].to_i,
           flat: flat,
-          scale_x: face[:scale_x],
-          scale_y: face[:scale_y],
+          face: face,
+          top_face: faces['up']
         )
 
         a1.delete(side)
@@ -107,7 +150,10 @@ class TextureConverter
     return if nsides == 4
 
     if a1 != args
-      raise args.inspect if a1.keys != [:top]
+      if a1.keys != [:top]
+        pp a1
+        raise "not all sides (#{nsides})"
+      end
       return
     end
 
@@ -136,27 +182,20 @@ class TextureConverter
     raise
   end # self.convert_args!
 
-  SCALE_X = 4
-  SCALE_Y = 2
-
-  def initialize debug: false, extra_tex: {}
-    @debug = debug
-    @extra_tex = extra_tex
-  end
-
   def _scale dst, fname, y0, x0: 0, scale_x: SCALE_X, scale_y: SCALE_Y, rotate: 0
     src = fname.is_a?(Image) ? fname : Image.new(File.open(fname,"rb"))
-
-    if src.width < 16 || src.height < 16
-      puts "[?] unexpected image size: #{src.width}x#{src.height}".yellow
-      return nil
-    end
 
     rotate = rotate.to_i
     raise "invalid rotate" if rotate%90 != 0
     while rotate != 0
       src = src.rotated_90_cw
       rotate -= 90
+    end
+
+    if src.width < 16 || src.height < 16
+      base = Image.new width: 16, height: 16
+      base.copy_from src, dst_x: (16-src.width)/2, dst_y: (16-src.height)
+      src = base
     end
 
     begun = false

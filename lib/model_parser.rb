@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 require 'json'
+require 'yaml'
 require 'awesome_print'
 require 'set'
 
 require_relative "texture_converter"
+require_relative "model"
 
 class ModelParser
   GOOD_KEYS = Set.new(%w'side top back front up end all texture east north south west inside content')
@@ -12,6 +14,13 @@ class ModelParser
     @assets_dir = assets_dir
     @was = {}
     @tree = {}
+    config = YAML.load_file "config.yml"
+    @ignores = config['ignore'].map{ |x| Regexp.new(x) }
+    @render_types = {}
+    config['render_types'].each do |k,v|
+      @render_types[Regexp.new(k)] = v.to_sym
+    end
+
     Dir[File.join(@assets_dir, "minecraft/models/block/*.json")].each do |fname|
       name = "block/" + File.basename(fname, ".json")
       @tree[name] = JSON.parse(File.read(fname))
@@ -37,7 +46,7 @@ class ModelParser
     #puts "[d] br: #{branch}"
     parent_tex = branch['parent'] ? resolve_textures(branch['parent']) : {}
     #puts "[d] pt: #{parent_tex}"
-    r = parent_tex.merge(branch['textures'] || {})
+    r = parent_tex.merge(branch['textures'] || {}).dup
     e = parent_tex['elements'] || branch['elements']
     #puts "[d] e: #{e}"
     r['elements'] = e if e
@@ -61,55 +70,53 @@ class ModelParser
   end
 
   def export_item k, debug: false
-    #v = @tree[k]
-    #return unless v['textures']
-    return if k =~ /_[nsew]+$/
-    return if k =~ /_(slab|stairs|pressure_plate|trapdoor|button|fence|leaves|base|age\d)/
-    return if k =~ /template_|grindstone/
+    name = File.basename(k.sub('minecraft:',''))
+    if @ignores.any?{ |re| re.match(name) }
+      puts "[-] #{k}".gray
+      return
+    end
 
-    return if k =~ /dispenser_vertical|dropper_vertical|sunflower|root|azalea|dripleaf|stripped|grass|froglight|template|scaffold|sculk|daylight|chiseled_bookshelf|stonecutter|candle|turtle_egg|anvil|jigsaw|command_block|comparator|chorus|brewing_stand|repeater|sea_pickle|cake|dragon_egg|chain/
-    return if k =~ /_(stem|inventory|alt)$/
+    model = Model.new(k, @tree[k])
 
-    return if k =~ /_wall_(post|side)/ # walls with different heights or smth
-    return if k =~ /lightning_rod|end_portal_frame_filled|lectern|_(noside|level|height|contents)\d/ # multiple textures with shift
-    return if k =~ /^bell_/
-    return if k =~ /:bell_/
-    return if k =~ /_door_(bottom|top)/
+    model_info = resolve(k) || raise("no model: #{k}")
+    pp model_info if debug
 
-    model = resolve(k) || raise("no model: #{k}")
-    pp model if debug
-
-    textures = resolve_textures(model)
-    pp textures if debug
+    textures = resolve_textures(model_info)
+#    pp textures if debug
     if textures.size == 0
       return
     end
 
+    flat = nil
     faces = nil
-    #puts "[d] textures:#{textures}"
+
     if textures['elements']
-      if true # textures['elements'].to_s[", 16, 16]"]
-        #puts "[*] #{k}: continue despite having elements".yellow
-        if textures['elements'].size == 1
-          faces = textures.dig('elements', 0, 'faces')
-          #puts "[d] #{k}: #{faces}" if faces.size == 2
-          faces.each do |fk, fv|
-            if "##{fk}" != fv['texture']
-              #printf "    %-6s: %s\n", fk, fv.inspect
-              tex_id = fv['texture'][1..-1]
-              if textures[tex_id]
-                textures[fk] = textures[tex_id]
-              else
-                puts "[?] #{k}: no texture #{fk}".yellow
-              end
+      efrom = textures.dig('elements', 0, 'from')
+      eto   = textures.dig('elements', 0, 'to')
+
+      if efrom && eto
+        flat = (efrom == [0, 0, 0] && eto == [16, 16, 16])
+      end
+
+      if textures['elements'].size == 1
+        faces = textures.dig('elements', 0, 'faces')
+        #puts "[d] #{k}: #{faces}" if faces.size == 2
+        faces.each do |fk, fv|
+          if "##{fk}" != fv['texture']
+            #printf "    %-6s: %s\n", fk, fv.inspect
+            tex_id = fv['texture'][1..-1]
+            if textures[tex_id]
+              textures[fk] = textures[tex_id]
+            else
+              puts "[?] #{k}: no texture #{fk}".yellow
             end
           end
         end
-        textures.delete('elements')
       else
-        log textures, k
-        return
+        puts "[?] #{name}: too many elements (#{textures['elements'].size})".yellow
+#        return
       end
+      textures.delete('elements')
     end
 
     keys = textures.keys
@@ -119,18 +126,6 @@ class ModelParser
     end
 
     return if textures.values.all?{ |x| x[0] == '#' }
-
-    #  kt = keys.map{ |x| [x, textures[x]].join(":") }.sort.join(' ')
-    #  return if @h1[kt]
-    #  @h1[kt] = true
-
-    #n += 1
-    #stats[keys.sort.join(" ")] += 1
-
-    #  puts "[.] #{k}: #{textures}"
-    #  textures.each do |type, tex|
-    #    printf "    %10s: %s\n", type, tex
-    #  end
 
     args = {}
     extra_tex = {}
@@ -164,10 +159,11 @@ class ModelParser
       return
     end
 
-    name = File.basename(k.sub('minecraft:',''))
-    flat = faces && (faces.size >= 1) && (faces.size <= 2)
-    flat ||= name =~ /_(planks|ore|carpet)$/ || name =~ /^(ladder|spawner)$/ || name =~ /^(farmland.*|mud|clay)$/ || name =~ /(soil|sand|dirt)$/
-    flat ||= name =~ /_glass|glass_/ || name == 'glass'
+    # scan list of regexps and find first matching
+    render_type = @render_types.find{ |x| x[0].match(name) }&.last&.to_sym
+    if render_type.nil? && !flat.nil?
+      render_type = flat ? :flat : :model
+    end
 
     if name =~ /_horizontal$/
       args[:north] = args[:south] = args[:top]
@@ -177,17 +173,23 @@ class ModelParser
         'east' => { 'rotation' => 90,  scale_x: 2, scale_y: 4 },
         'west' => { 'rotation' => 270, scale_x: 2, scale_y: 4 },
       }
-      flat = false
+      render_type = :table
     end
 
-    if flat && args.values.uniq.size == 1
+    model.render_type = render_type
+    if debug 
+      STDOUT << "[d] model: "
+      pp model
+    end
+
+    if render_type == :flat && args.values.uniq.size == 1
       args = { top: args.values.uniq.first } # flatten
     end
-    TextureConverter.convert_args! args, name, flat: flat, debug: debug, extra_tex: extra_tex, faces: faces
+    TextureConverter.convert_args! args, name, flat: flat, debug: debug, extra_tex: extra_tex, faces: faces, render_type: render_type
   end # export_item
 
   def process!
-    @tree.keys.sort_by(&:size).each do |k|
+    @tree.keys.sort.each do |k|
       export_item k
     end
   end
@@ -196,6 +198,7 @@ end
 if __FILE__ == $0
   p = ModelParser.new( File.expand_path("~/games/minecraft/assets") )
   ARGV.each do |arg|
+    arg = "block/#{arg}" unless arg['block/']
     p.export_item arg, debug: true
   end
 end

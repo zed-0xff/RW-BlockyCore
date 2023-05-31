@@ -33,7 +33,12 @@ desc "import all"
 task :import => "import:all"
 
 namespace :import do
-  task :all => [:models, :doors, :dedup, :defs]
+  task :all => [:prune, :models, :doors, :dedup, :defs]
+
+  desc "clear all imported data"
+  task :prune do
+    system "rm -rf Textures/Blocky/?"
+  end
 
   desc "delete duplicate entities"
   task :dedup do

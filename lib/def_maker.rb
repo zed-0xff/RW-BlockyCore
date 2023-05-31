@@ -45,8 +45,12 @@ class DefMaker
     case name
     when 'Bookshelf', /^Barrel/, 'Jukebox', 'NoteBlock', /Lamp/, /Hopper/, /Cauldron/
       "Blocky_Props_Furniture"
-    when /door/i
+    when /Door/
       "Blocky_Props_Doors"
+    when /Trapdoor/
+      "Blocky_Props_Trapdoors"
+    when /Fence/
+      "Blocky_Props_Fences"
     when /Ore$/
       "Blocky_Props_Ores"
     when /Bricks$/, /Tiles$/
@@ -57,25 +61,33 @@ class DefMaker
       "Blocky_Props_Wool"
     when /Carpet$/
       "Blocky_Props_Carpet"
+    when /Potted/
+      "Blocky_Props_Potted"
     when /Farmland/, /Soil$/, 'Mud', /Sand$/, 'Clay', /Dirt$/
       "Blocky_Props_Soil"
     when /Wood$/, /Log$/, /LogHorizontal/
       "Blocky_Props_Wood"
-    when /^Bee/, 'Melon', 'Cactus', /Pumpkin/, /HayBlock/, 'HoneyBlock', 'JackOLantern', /Bamboo/, 'Composter'
+    when /^Bee/, /Melon/, 'Cactus', /Pumpkin/, /HayBlock/, 'HoneyBlock', 'JackOLantern', /Stage\d/, /Age\d/, 'Composter', /NetherWart/, /Mushroom$/
       "Blocky_Props_Garden"
+    when /Leaves/, /Vine/
+      "Blocky_Props_Leaves"
+    when /Lilac|Lily|Azalea|[fF]lower|Poppy|Dandelion|Tulip|Blossom|Daisy|Rose|Bluet|Allium|Sprout|Orchid/
+      "Blocky_Props_Grass"
+    when /Coral|Bush|Propagule|Bud$|Fan$|Lichen|Root|Kelp|Plant|Seagrass|Fern|Dripleaf|Sapling|Grass|Fungus/
+      "Blocky_Props_Grass"
     when /Glass/
       "Blocky_Props_Glass"
     when 'Andesite', 'Diorite', 'Deepslate', 'Bedrock', 'Calcite', 'EndStone', 'Obsidian', 'Prismarine', /^Polished/, 'Stone', 'Tuff', 'Granite', 'Gravel', 'Cobblestone'
       "Blocky_Props_StonyA"
-    when /StructureBlock/
-      "Blocky_Props_Misc"
+    when /^Structure/, /CommandBlock/, 'Jigsaw', 'Barrier'
+      "Blocky_Props_System"
     when /stone$/, /Basalt/, /Deepslate/, /Block$/, /Packed/, /Ice/, /Snow/, /^Smooth/, 'Netherrack', /Copper/, 'MushroomBlockInside'
       "Blocky_Props_StonyB"
     when /Concrete/
       "Blocky_Props_Concrete"
     when /Terracotta/
       "Blocky_Props_Terracotta"
-    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/
+    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone.*Torch/, /RedstoneDust/, /Comparator/, /Repeater/
       "Blocky_Props_Redstone"
     when /furnace/i, 'Loom', 'Stonecutter', 'Smoker', 'SmokerOn', /Table$/
       "Blocky_Props_Craft"
