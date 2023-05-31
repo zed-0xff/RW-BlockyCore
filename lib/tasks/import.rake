@@ -50,7 +50,7 @@ namespace :import do
   desc "import models"
   task :models do
     require_relative "../model_parser"
-    ModelParser.new(ASSETS_DIR).process!
+    ModelParser.new.process!
   end
 
   desc "import doors"

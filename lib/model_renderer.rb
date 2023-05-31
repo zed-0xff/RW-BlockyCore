@@ -11,6 +11,21 @@ class ModelRenderer
     @border = false
   end
 
+  def render_all
+    r = {}
+    case model.render_type
+    when :"3d_model", :table_noborder, :table
+      Side.each_nsew do |side|
+        r[side] = render(side)
+      end
+    when :flat, :side_south
+      r[:flat] = render
+    else
+      raise "[?] undexpected render type: #{model.render_type}"
+    end
+    r
+  end
+
   # slow
   def detect_render_type
     images = Side.all.map{ |side| model.render_side(side) }
@@ -27,7 +42,7 @@ class ModelRenderer
   def render side = nil
     detect_render_type if model.render_type.nil?
 
-    type = model.render_type || :flat
+    type = model.render_type
     side ? send("render_#{type}", side) : send("render_#{type}")
   end
 
@@ -43,16 +58,16 @@ class ModelRenderer
     nil
   end
 
-  def render_wall side = Side.north
-    dst = Image.new( width: 64, height: 64 )
-    up_rotated = model.render_top(side)
-    dst.copy_from up_rotated, dst_width: 64, dst_height: 16
-    side_tex = model.render_side(side)
-    dst.copy_from side_tex, dst_width: 64, dst_height: 48, dst_y: 16
-    @mask_fname = 'mask_bottom48.png'
-    mask!(dst, 16)
-    dst
-  end
+#  def render_wall side = Side.north
+#    dst = Image.new( width: 64, height: 64 )
+#    up_rotated = model.render_top(side)
+#    dst.copy_from up_rotated, dst_width: 64, dst_height: 16
+#    side_tex = model.render_side(side)
+#    dst.copy_from side_tex, dst_width: 64, dst_height: 48, dst_y: 16
+#    @mask_fname = 'mask_bottom48.png'
+#    mask!(dst, 16)
+#    dst
+#  end
 
   def render_side_south
     render_flat Side.south
