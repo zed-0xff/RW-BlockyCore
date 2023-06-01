@@ -5,7 +5,7 @@ using System.Reflection;
 using Verse;
 using UnityEngine;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 public enum TabShowMode{ DevModeOnly, GodModeOnly, Always, Never };
 
@@ -18,11 +18,11 @@ public class Settings : ModSettings {
     }
 }
 
-class PropsTab : SettingsTabBase {
-    public override string Title => "Props";
+class CoreTab : SettingsTabBase {
+    public override string Title => "Core";
 
     public override void Draw(Listing_Standard l){
-        l.LabelDouble("Show 'Blocky.Props' architect menu tab", "");
+        l.LabelDouble("Show 'Blocky.Core' architect menu tab", "");
         foreach (TabShowMode x in Enum.GetValues(typeof(TabShowMode))) {
             if( l.RadioButton(GenText.SplitCamelCase(x.ToString()), ModConfig.Settings.tabShowMode == x, 20) ){
                 ModConfig.Settings.tabShowMode = x;

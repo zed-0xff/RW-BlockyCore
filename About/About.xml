@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Blocky Props</name>
+  <name>Blocky Core</name>
   <author>zed_0xff</author>
-  <packageId>Blocky.Props</packageId>
+  <packageId>Blocky.Core</packageId>
   <supportedVersions>
     <li>1.4</li>
   </supportedVersions>
-  <description>Blocky.Props
+  <description>Blocky.Core
 
 [url=https://ko-fi.com/K3K81Z3W5][img]https://i.imgur.com/Utx6OIH.png[/img][/url]</description>
   <modDependencies>

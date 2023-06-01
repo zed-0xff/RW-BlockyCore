@@ -2,7 +2,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 // same as Graphic_Flicker, but without jumping
 public class Graphic_Fire : Graphic_Collection

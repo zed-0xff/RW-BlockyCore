@@ -4,7 +4,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 public class Dialog_ColorPicker : Window
 {

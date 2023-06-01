@@ -1,7 +1,7 @@
 using RimWorld;
 using Verse;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 [DefOf]
 public static class VDefOf

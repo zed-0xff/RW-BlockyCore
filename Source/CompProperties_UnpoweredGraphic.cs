@@ -1,7 +1,7 @@
 using Verse;
 using RimWorld;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 public class CompProperties_UnpoweredGraphic : CompProperties {
     public GraphicData graphicData;

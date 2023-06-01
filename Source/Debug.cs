@@ -2,7 +2,7 @@ using RimWorld;
 using System.Linq;
 using Verse;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 public static class Debug {
 
@@ -36,7 +36,7 @@ public static class Debug {
         }
     }
 
-    [DebugAction("Blocky.Props", "Spawn all!", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
+    [DebugAction("Blocky.Core", "Spawn all!", false, false, allowedGameStates = AllowedGameStates.PlayingOnMap)]
     private static void SpawnAll(){
         var map = Find.CurrentMap;
         int dx = 16;

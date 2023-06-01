@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using Verse;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
-// show/hide "Blocky.Props" tab
+// show/hide "Blocky.Core" tab
 static class Patch_MainTabWindow_Architect {
 
     private static readonly MethodInfo m_CacheDesPanels = AccessTools.Method(typeof(MainTabWindow_Architect), "CacheDesPanels");

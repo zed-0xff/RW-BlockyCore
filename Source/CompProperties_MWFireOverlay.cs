@@ -2,7 +2,7 @@ using UnityEngine;
 using RimWorld;
 using Verse;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 public class CompProperties_MWFireOverlay : CompProperties_FireOverlay {
     public string texPath;

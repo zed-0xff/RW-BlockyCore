@@ -1,6 +1,6 @@
 using Verse;
 
-namespace Blocky.Props;
+namespace Blocky.Core;
 
 // XXX all child mods needs to be recompiled if changed!
 public abstract class SettingsTabBase {
