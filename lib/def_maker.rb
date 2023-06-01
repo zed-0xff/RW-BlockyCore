@@ -71,7 +71,7 @@ class DefMaker
       "Blocky_Props_Garden"
     when /Leaves/, /Vine/
       "Blocky_Props_Leaves"
-    when /Lilac|Lily|Azalea|[fF]lower|Poppy|Dandelion|Tulip|Blossom|Daisy|Rose|Bluet|Allium|Sprout|Orchid/
+    when /Lilac|Lily|Azalea|[fF]lower|Poppy|Dandelion|Tulip|Blossom|Daisy|Rose|Bluet|Allium|Sprout|Orchid|Peony/
       "Blocky_Props_Grass"
     when /Coral|Bush|Propagule|Bud$|Fan$|Lichen|Root|Kelp|Plant|Seagrass|Fern|Dripleaf|Sapling|Grass|Fungus/
       "Blocky_Props_Grass"
