@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef Name="Blocky_Props_AcaciaDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_AcaciaDoor</defName>
+    <label>acacia door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/AcaciaDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/AcaciaDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_BambooDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_BambooDoor</defName>
+    <label>bamboo door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/BambooDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/BambooDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_BirchDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_BirchDoor</defName>
+    <label>birch door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/BirchDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/BirchDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_CrimsonDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_CrimsonDoor</defName>
+    <label>crimson door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/CrimsonDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/CrimsonDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_DarkOakDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_DarkOakDoor</defName>
+    <label>dark oak door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/DarkOakDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/DarkOakDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_IronDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_IronDoor</defName>
+    <label>iron door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/IronDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/IronDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_JungleDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_JungleDoor</defName>
+    <label>jungle door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/JungleDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/JungleDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_MangroveDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_MangroveDoor</defName>
+    <label>mangrove door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/MangroveDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/MangroveDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_OakDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_OakDoor</defName>
+    <label>oak door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/OakDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/OakDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_SpruceDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_SpruceDoor</defName>
+    <label>spruce door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/SpruceDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/SpruceDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_WarpedDoor" ParentName="Blocky_Props_Base_Door">
+    <defName>Blocky_Props_WarpedDoor</defName>
+    <label>warped door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/WarpedDoor_Mover</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
+    <uiIconPath>Blocky/Doors/WarpedDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <DesignatorDropdownGroupDef>
+    <defName>Blocky_Props_Doors</defName>
+  </DesignatorDropdownGroupDef>
+
+</Defs>
