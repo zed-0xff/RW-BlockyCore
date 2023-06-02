@@ -6,7 +6,7 @@ namespace Blocky.Core;
 
 public static class Debug {
 
-    const int edgeWidth = 1; // GenGrid.NoBuildEdgeWidth = 10
+    const int edgeWidth = 5; // GenGrid.NoBuildEdgeWidth = 10
 
     static void spawnAll(){
         var map = Find.CurrentMap;

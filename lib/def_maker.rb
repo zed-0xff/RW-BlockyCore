@@ -8,23 +8,50 @@ class DefMaker
   def initialize
     @was = {}
     @designators = Hash.new(0)
+    @defs = []
 
-    @lines = [%Q|<?xml version="1.0" encoding="utf-8" ?>|]
-    @lines << "<Defs>"
+    @released = Set.new(YAML::load_file("released.yml"))
+  end
+
+  def released?(defName)
+    @released.include?(defName)
   end
 
   def process!
+    @defs = []
     Dir["Textures/Blocky/?/*.png"].each do |fname|
       add_def_from_texture(fname)
     end
-    write! "Defs/All.xml"
+    write_defs! "Defs/Released.xml"
+
+    @defs = []
+    Dir["Textures/Blocky/Alpha/?/*.png"].each do |fname|
+      add_def_from_texture(fname)
+    end
+    write_defs! "Defs/Alpha.xml"
+
+    @defs = []
+    convert_designators!
+    write_defs! "Defs/DesignatorDropdowns.xml"
   end
 
   def indent(s, n)
     s.gsub(/^/, " "*n)
   end
 
-  def write! fname
+  def write_defs! fname, defs = @defs
+    lines = [%Q|<?xml version="1.0" encoding="utf-8" ?>|]
+    lines << "<Defs>"
+    defs.each do |d|
+      lines << d.indent(2)
+    end
+    lines << "</Defs>"
+    File.write fname, lines.join("\n")
+
+    printf "[=] %3d defs in %s\n", defs.size, fname
+  end
+
+  def convert_designators!
     nTotal = 0
     @designators.sort_by(&:last).each do |defName, nItems|
       nTotal += nItems
@@ -35,10 +62,7 @@ class DefMaker
         </DesignatorDropdownGroupDef>
       EOF
     end
-    printf "[*] %3d items total\n", nTotal
-
-    @lines << "</Defs>"
-    File.write fname, @lines.join("\n")
+    #printf "[*] %3d items total\n", nTotal
   end
 
   def name2designator name
@@ -101,11 +125,15 @@ class DefMaker
   end
 
   def add_def x
-    @lines << x.indent(2)
+    @defs << x
   end
 
   def add_designator designator
     @designators[designator] += 1 if designator
+  end
+
+  def name2defName name
+    "Blocky_Props_" + name.tr("0123456789", "ABCDEFGHIJ")
   end
 
   def add_def_from_texture fname, parentName: nil, name: nil, texPath: nil
@@ -115,8 +143,8 @@ class DefMaker
     @was[name] = true
 
     parentName ||= fname["_"] ? "Blocky_Props_Base_Multi" : "Blocky_Props_Base"
-    defName = "Blocky_Props_" + name.tr("0123456789", "ABCDEFGHIJ")
-    label = name.underscore.humanize.downcase
+    defName = name2defName(name)
+    label = name.underscore.humanize.downcase + (released?(defName) ? "" : " (unreleased)")
 
     texPath ||= File.join(File.dirname(fname), name)
     texPath.sub!(/^Textures\//, "")
@@ -124,7 +152,7 @@ class DefMaker
     designator = name2designator(name)
     add_designator(designator)
 
-    printf "[.] %-27s  %-12s %s\n", name, designator, fname["_"] ? list_dirs(fname) : ""
+    #printf "[.] %-27s  %-12s %s\n", name, designator, fname["_"] ? list_dirs(fname) : ""
 
     add_def <<~EOF
       <ThingDef ParentName="#{parentName}">

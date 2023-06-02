@@ -16,6 +16,10 @@ class DoorMaker < DefMaker
     @assets_dir = assets_dir
   end
 
+  def released? *args
+    true
+  end
+
   def process!
     FileUtils.mkdir_p TEX_REL_PATH
     Dir[File.join(@assets_dir, "minecraft/textures/block/*_door_top.png")].each do |top_fname|
@@ -86,6 +90,7 @@ class DoorMaker < DefMaker
       EOF
     end
 
-    write! "Defs/Doors.xml"
+    convert_designators!
+    write_defs! "Defs/Doors.xml"
   end
 end

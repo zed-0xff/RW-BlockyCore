@@ -37,12 +37,13 @@ namespace :import do
 
   desc "clear all imported data"
   task :prune do
-    system "rm -rf Textures/Blocky/?"
+    system "rm -rf Textures/Alpha"
+    system "rm -rf Defs/Alpha*"
   end
 
   desc "delete duplicate entities"
   task :dedup do
-    Dir["Textures/Blocky/?"].sort.each do |dirname|
+    Dir["Textures/Blocky/Alpha/?"].sort.each do |dirname|
       dedup_dir! dirname
     end
   end

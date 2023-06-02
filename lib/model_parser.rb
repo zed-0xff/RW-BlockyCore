@@ -1,12 +1,14 @@
 #!/usr/bin/env ruby
 require_relative 'model'
 require_relative 'model_renderer'
+require_relative 'def_maker'
 
 require 'active_support/core_ext/string'
 
 class ModelParser
   def initialize
     @render_types = {}
+    @defmaker = DefMaker.new
   end
 
   def process!
@@ -30,7 +32,7 @@ class ModelParser
     end
 
     key = "block/" + name
-    #puts "[.] #{key}"
+    puts "[.] #{key}"
     model = Model.find(key)
     return if model.abstract?
 
@@ -38,8 +40,11 @@ class ModelParser
     renderer.detect_render_type unless model.render_type
     return if model.abstract?
 
+    defName = @defmaker.name2defName(name.camelize)
+    released = @defmaker.released?(defName)
+
     images = renderer.render_all
-    dst_dir = File.join("Textures", "Blocky", name[0].upcase)
+    dst_dir = File.join("Textures", "Blocky", (released ? "" : "Alpha"), name[0].upcase)
     FileUtils.mkdir_p dst_dir
 
     if images.size == 1
