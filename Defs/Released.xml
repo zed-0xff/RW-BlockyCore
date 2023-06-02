@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_AcaciaPlanks</defName>
+    <label>acacia planks</label>
+    <graphicData>
+      <texPath>Blocky/A/AcaciaPlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_ActivatorRail</defName>
+    <label>activator rail</label>
+    <graphicData>
+      <texPath>Blocky/A/ActivatorRail</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_ActivatorRailOn</defName>
+    <label>activator rail on</label>
+    <graphicData>
+      <texPath>Blocky/A/ActivatorRailOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BambooMosaic</defName>
+    <label>bamboo mosaic</label>
+    <graphicData>
+      <texPath>Blocky/B/BambooMosaic</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BambooPlanks</defName>
+    <label>bamboo planks</label>
+    <graphicData>
+      <texPath>Blocky/B/BambooPlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Barrel</defName>
+    <label>barrel</label>
+    <graphicData>
+      <texPath>Blocky/B/Barrel</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_BeeNestHoney</defName>
+    <label>bee nest honey</label>
+    <graphicData>
+      <texPath>Blocky/B/BeeNestHoney</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_BeeNest</defName>
+    <label>bee nest</label>
+    <graphicData>
+      <texPath>Blocky/B/BeeNest</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_BeehiveHoney</defName>
+    <label>beehive honey</label>
+    <graphicData>
+      <texPath>Blocky/B/BeehiveHoney</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Beehive</defName>
+    <label>beehive</label>
+    <graphicData>
+      <texPath>Blocky/B/Beehive</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BeetrootsStageA</defName>
+    <label>beetroots stage0</label>
+    <graphicData>
+      <texPath>Blocky/B/BeetrootsStage0</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BeetrootsStageB</defName>
+    <label>beetroots stage1</label>
+    <graphicData>
+      <texPath>Blocky/B/BeetrootsStage1</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BeetrootsStageC</defName>
+    <label>beetroots stage2</label>
+    <graphicData>
+      <texPath>Blocky/B/BeetrootsStage2</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BeetrootsStageD</defName>
+    <label>beetroots stage3</label>
+    <graphicData>
+      <texPath>Blocky/B/BeetrootsStage3</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BirchPlanks</defName>
+    <label>birch planks</label>
+    <graphicData>
+      <texPath>Blocky/B/BirchPlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_BlastFurnaceOn</defName>
+    <label>blast furnace on</label>
+    <graphicData>
+      <texPath>Blocky/B/BlastFurnaceOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_BlastFurnace</defName>
+    <label>blast furnace</label>
+    <graphicData>
+      <texPath>Blocky/B/BlastFurnace</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Bookshelf</defName>
+    <label>bookshelf</label>
+    <graphicData>
+      <texPath>Blocky/B/Bookshelf</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_BrownMushroom</defName>
+    <label>brown mushroom</label>
+    <graphicData>
+      <texPath>Blocky/B/BrownMushroom</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_CarrotsStageA</defName>
+    <label>carrots stage0</label>
+    <graphicData>
+      <texPath>Blocky/C/CarrotsStage0</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_CarrotsStageB</defName>
+    <label>carrots stage1</label>
+    <graphicData>
+      <texPath>Blocky/C/CarrotsStage1</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_CarrotsStageC</defName>
+    <label>carrots stage2</label>
+    <graphicData>
+      <texPath>Blocky/C/CarrotsStage2</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_CarrotsStageD</defName>
+    <label>carrots stage3</label>
+    <graphicData>
+      <texPath>Blocky/C/CarrotsStage3</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_CartographyTable</defName>
+    <label>cartography table</label>
+    <graphicData>
+      <texPath>Blocky/C/CartographyTable</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_CarvedPumpkin</defName>
+    <label>carved pumpkin</label>
+    <graphicData>
+      <texPath>Blocky/C/CarvedPumpkin</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Cauldron</defName>
+    <label>cauldron</label>
+    <graphicData>
+      <texPath>Blocky/C/Cauldron</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Clay</defName>
+    <label>clay</label>
+    <graphicData>
+      <texPath>Blocky/C/Clay</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_CoarseDirt</defName>
+    <label>coarse dirt</label>
+    <graphicData>
+      <texPath>Blocky/C/CoarseDirt</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Composter</defName>
+    <label>composter</label>
+    <graphicData>
+      <texPath>Blocky/C/Composter</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_CraftingTable</defName>
+    <label>crafting table</label>
+    <graphicData>
+      <texPath>Blocky/C/CraftingTable</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_CrimsonPlanks</defName>
+    <label>crimson planks</label>
+    <graphicData>
+      <texPath>Blocky/C/CrimsonPlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_DarkOakPlanks</defName>
+    <label>dark oak planks</label>
+    <graphicData>
+      <texPath>Blocky/D/DarkOakPlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_DetectorRail</defName>
+    <label>detector rail</label>
+    <graphicData>
+      <texPath>Blocky/D/DetectorRail</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_DetectorRailOn</defName>
+    <label>detector rail on</label>
+    <graphicData>
+      <texPath>Blocky/D/DetectorRailOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Dirt</defName>
+    <label>dirt</label>
+    <graphicData>
+      <texPath>Blocky/D/Dirt</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Dispenser</defName>
+    <label>dispenser</label>
+    <graphicData>
+      <texPath>Blocky/D/Dispenser</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Dropper</defName>
+    <label>dropper</label>
+    <graphicData>
+      <texPath>Blocky/D/Dropper</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_EnchantingTable</defName>
+    <label>enchanting table</label>
+    <graphicData>
+      <texPath>Blocky/E/EnchantingTable</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_EndPortalFrameFilled</defName>
+    <label>end portal frame filled</label>
+    <graphicData>
+      <texPath>Blocky/E/EndPortalFrameFilled</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_EndPortalFrame</defName>
+    <label>end portal frame</label>
+    <graphicData>
+      <texPath>Blocky/E/EndPortalFrame</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Farmland</defName>
+    <label>farmland</label>
+    <graphicData>
+      <texPath>Blocky/F/Farmland</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_FarmlandMoist</defName>
+    <label>farmland moist</label>
+    <graphicData>
+      <texPath>Blocky/F/FarmlandMoist</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_FletchingTable</defName>
+    <label>fletching table</label>
+    <graphicData>
+      <texPath>Blocky/F/FletchingTable</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_FurnaceOn</defName>
+    <label>furnace on</label>
+    <graphicData>
+      <texPath>Blocky/F/FurnaceOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Furnace</defName>
+    <label>furnace</label>
+    <graphicData>
+      <texPath>Blocky/F/Furnace</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_HayBlock</defName>
+    <label>hay block</label>
+    <graphicData>
+      <texPath>Blocky/H/HayBlock</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_JackOLantern</defName>
+    <label>jack o lantern</label>
+    <graphicData>
+      <texPath>Blocky/J/JackOLantern</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Jukebox</defName>
+    <label>jukebox</label>
+    <graphicData>
+      <texPath>Blocky/J/Jukebox</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_JunglePlanks</defName>
+    <label>jungle planks</label>
+    <graphicData>
+      <texPath>Blocky/J/JunglePlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Ladder</defName>
+    <label>ladder</label>
+    <graphicData>
+      <texPath>Blocky/L/Ladder</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_LavaCauldron</defName>
+    <label>lava cauldron</label>
+    <graphicData>
+      <texPath>Blocky/L/LavaCauldron</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Loom</defName>
+    <label>loom</label>
+    <graphicData>
+      <texPath>Blocky/L/Loom</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_MangrovePlanks</defName>
+    <label>mangrove planks</label>
+    <graphicData>
+      <texPath>Blocky/M/MangrovePlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Melon</defName>
+    <label>melon</label>
+    <graphicData>
+      <texPath>Blocky/M/Melon</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Mud</defName>
+    <label>mud</label>
+    <graphicData>
+      <texPath>Blocky/M/Mud</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_NoteBlock</defName>
+    <label>note block</label>
+    <graphicData>
+      <texPath>Blocky/N/NoteBlock</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_OakPlanks</defName>
+    <label>oak planks</label>
+    <graphicData>
+      <texPath>Blocky/O/OakPlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_ObserverOn</defName>
+    <label>observer on</label>
+    <graphicData>
+      <texPath>Blocky/O/ObserverOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Observer</defName>
+    <label>observer</label>
+    <graphicData>
+      <texPath>Blocky/O/Observer</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Piston</defName>
+    <label>piston</label>
+    <graphicData>
+      <texPath>Blocky/P/Piston</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_PotatoesStageA</defName>
+    <label>potatoes stage0</label>
+    <graphicData>
+      <texPath>Blocky/P/PotatoesStage0</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_PotatoesStageB</defName>
+    <label>potatoes stage1</label>
+    <graphicData>
+      <texPath>Blocky/P/PotatoesStage1</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_PotatoesStageC</defName>
+    <label>potatoes stage2</label>
+    <graphicData>
+      <texPath>Blocky/P/PotatoesStage2</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_PotatoesStageD</defName>
+    <label>potatoes stage3</label>
+    <graphicData>
+      <texPath>Blocky/P/PotatoesStage3</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_PowderSnowCauldronFull</defName>
+    <label>powder snow cauldron full</label>
+    <graphicData>
+      <texPath>Blocky/P/PowderSnowCauldronFull</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_PoweredRail</defName>
+    <label>powered rail</label>
+    <graphicData>
+      <texPath>Blocky/P/PoweredRail</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_PoweredRailOn</defName>
+    <label>powered rail on</label>
+    <graphicData>
+      <texPath>Blocky/P/PoweredRailOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Pumpkin</defName>
+    <label>pumpkin</label>
+    <graphicData>
+      <texPath>Blocky/P/Pumpkin</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Rail</defName>
+    <label>rail</label>
+    <graphicData>
+      <texPath>Blocky/R/Rail</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_RailCorner</defName>
+    <label>rail corner</label>
+    <graphicData>
+      <texPath>Blocky/R/RailCorner</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_RedMushroom</defName>
+    <label>red mushroom</label>
+    <graphicData>
+      <texPath>Blocky/R/RedMushroom</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_RedSand</defName>
+    <label>red sand</label>
+    <graphicData>
+      <texPath>Blocky/R/RedSand</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_RedstoneLampOn</defName>
+    <label>redstone lamp on</label>
+    <graphicData>
+      <texPath>Blocky/R/RedstoneLampOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_RedstoneLamp</defName>
+    <label>redstone lamp</label>
+    <graphicData>
+      <texPath>Blocky/R/RedstoneLamp</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_RedstoneTorch</defName>
+    <label>redstone torch</label>
+    <graphicData>
+      <texPath>Blocky/R/RedstoneTorch</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_RedstoneTorchOff</defName>
+    <label>redstone torch off</label>
+    <graphicData>
+      <texPath>Blocky/R/RedstoneTorchOff</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_RootedDirt</defName>
+    <label>rooted dirt</label>
+    <graphicData>
+      <texPath>Blocky/R/RootedDirt</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Sand</defName>
+    <label>sand</label>
+    <graphicData>
+      <texPath>Blocky/S/Sand</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_SmithingTable</defName>
+    <label>smithing table</label>
+    <graphicData>
+      <texPath>Blocky/S/SmithingTable</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_SmokerOn</defName>
+    <label>smoker on</label>
+    <graphicData>
+      <texPath>Blocky/S/SmokerOn</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Smoker</defName>
+    <label>smoker</label>
+    <graphicData>
+      <texPath>Blocky/S/Smoker</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_SoulSoil</defName>
+    <label>soul soil</label>
+    <graphicData>
+      <texPath>Blocky/S/SoulSoil</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Soil</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_SoulTorch</defName>
+    <label>soul torch</label>
+    <graphicData>
+      <texPath>Blocky/S/SoulTorch</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_SprucePlanks</defName>
+    <label>spruce planks</label>
+    <graphicData>
+      <texPath>Blocky/S/SprucePlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_StickyPiston</defName>
+    <label>sticky piston</label>
+    <graphicData>
+      <texPath>Blocky/S/StickyPiston</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Stonecutter</defName>
+    <label>stonecutter</label>
+    <graphicData>
+      <texPath>Blocky/S/Stonecutter</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_SweetBerryBushStageA</defName>
+    <label>sweet berry bush stage0</label>
+    <graphicData>
+      <texPath>Blocky/S/SweetBerryBushStage0</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_SweetBerryBushStageB</defName>
+    <label>sweet berry bush stage1</label>
+    <graphicData>
+      <texPath>Blocky/S/SweetBerryBushStage1</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_SweetBerryBushStageC</defName>
+    <label>sweet berry bush stage2</label>
+    <graphicData>
+      <texPath>Blocky/S/SweetBerryBushStage2</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_SweetBerryBushStageD</defName>
+    <label>sweet berry bush stage3</label>
+    <graphicData>
+      <texPath>Blocky/S/SweetBerryBushStage3</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Target</defName>
+    <label>target</label>
+    <graphicData>
+      <texPath>Blocky/T/Target</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_Tnt</defName>
+    <label>tnt</label>
+    <graphicData>
+      <texPath>Blocky/T/Tnt</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Torch</defName>
+    <label>torch</label>
+    <graphicData>
+      <texPath>Blocky/T/Torch</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_WarpedFungus</defName>
+    <label>warped fungus</label>
+    <graphicData>
+      <texPath>Blocky/W/WarpedFungus</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_WarpedPlanks</defName>
+    <label>warped planks</label>
+    <graphicData>
+      <texPath>Blocky/W/WarpedPlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_WaterCauldronFull</defName>
+    <label>water cauldron full</label>
+    <graphicData>
+      <texPath>Blocky/W/WaterCauldronFull</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+</Defs>
