@@ -2,13 +2,21 @@
 <ModMetaData>
   <name>Blocky Core</name>
   <author>zed_0xff</author>
+  <url>https://github.com/zed-0xff/RW-BlockyCore</url>
   <packageId>Blocky.Core</packageId>
   <supportedVersions>
     <li>1.4</li>
   </supportedVersions>
-  <description>Blocky.Core
+  <description><![CDATA[<color=#1a8bff><b>Blocky Core</b></color>
 
-[url=https://ko-fi.com/K3K81Z3W5][img]https://i.imgur.com/Utx6OIH.png[/img][/url]</description>
+This mod provides shared textures and functions for other Blocky mods.
+Also adds 100+ props from the Minecraft.
+"Blocky Props" architect menu is visible only in dev.mode by default, configurable in mod's settings.
+
+https://github.com/zed-0xff/RW-BlockyCore
+
+<color=#1a8bff><b>Support me</b></color>
+https://ko-fi.com/K3K81Z3W5 or https://www.patreon.com/zed_0xff]]></description>
   <modDependencies>
     <li>
       <packageId>brrainz.harmony</packageId>
