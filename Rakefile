@@ -2,15 +2,25 @@ require 'rimtool/rake_tasks'
 load './lib/tasks/import.rake'
 
 task :map2release do
-  tree = Nori.new.parse(
-    RimTool::YADA.request("Map.Request_GetThingList", from: "(0,0,99)", to: "(99,0,95)")
-  )
   defs = []
-  tree.dig('Response', 'saveable').each do |s|
-    defName = s['def']
-    next unless defName =~ /^Blocky_Props_/
-    defs << defName.to_s
+  z = 98
+  loop do
+    z -= 1
+    puts "[.] z=#{z}"
+    tree = Nori.new.parse(
+      RimTool::YADA.request("Map.Request_GetThingList", from: "(0,0,#{z})", to: "(99,0,#{z})")
+    )
+    items = tree.dig('Response', 'saveable')
+    break if items.nil? || items.empty?
+
+    items = [items] if items.is_a?(Hash)
+    items.each do |s|
+      defName = s['def']
+      next unless defName =~ /^Blocky_Props_/
+      defs << defName.to_s
+    end
   end
+  puts "[=] #{defs.size} defs"
   File.write "released.yml", defs.sort.to_yaml
 end
 

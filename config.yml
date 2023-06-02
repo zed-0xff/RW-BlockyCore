@@ -2,7 +2,7 @@ assets_dir: ~/games/minecraft/assets
 render_types:
   _log_horizontal$: table
   barrel: table
-  beacon: table # FIXME
+  beacon: table
   beehive|bee_nest: table
   bookshelf: table
   brewing_stand: flat
@@ -38,12 +38,14 @@ render_types:
   smoker: table
   stonecutter: table
   table: table
+  torch: side_south
   tnt: table
 
 ignore:
   - ^air$
   - ^bell
   - ^block$
+  - ^(banner|bed|chest)$ # rendered as an entity
   - ^light_\d
   - ^template
   - ^stem_growth
@@ -72,10 +74,11 @@ ignore:
   - moving_piston$
   - pane_noside$
   - sea_pickle
-  - _sign$ # rendered as entity
+  - _sign$ # rendered as an entity
   - slab
   - stairs
   - turtle_egg
   - wall_(post|side)
+  - wall_torch
   - button$
   - button_pressed$

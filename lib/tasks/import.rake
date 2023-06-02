@@ -37,7 +37,7 @@ namespace :import do
 
   desc "clear all imported data"
   task :prune do
-    system "rm -rf Textures/Alpha"
+    system "rm -rf Textures/Blocky/Alpha"
     system "rm -rf Defs/Alpha*"
   end
 

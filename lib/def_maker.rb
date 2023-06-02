@@ -69,6 +69,8 @@ class DefMaker
     case name
     when 'Bookshelf', /^Barrel/, 'Jukebox', 'NoteBlock', /Lamp/, /Hopper/, /Cauldron/
       "Blocky_Props_Furniture"
+    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone.*Torch/, /RedstoneDust/, /Comparator/, /Repeater/, /PressurePlate/
+      "Blocky_Props_Redstone"
     when /Door/
       "Blocky_Props_Doors"
     when /Trapdoor/
@@ -91,7 +93,7 @@ class DefMaker
       "Blocky_Props_Soil"
     when /Wood$/, /Log$/, /LogHorizontal/
       "Blocky_Props_Wood"
-    when /^Bee/, /Melon/, 'Cactus', /Pumpkin/, /HayBlock/, 'HoneyBlock', 'JackOLantern', /Stage\d/, /Age\d/, 'Composter', /NetherWart/, /Mushroom$/
+    when /^Bee/, /Melon/, 'Cactus', /Pumpkin/, /HayBlock/, 'HoneyBlock', 'JackOLantern', /Stage\d/, /Age\d/, 'Composter', /NetherWart/, /Mushroom$/, 'WarpedFungus'
       "Blocky_Props_Garden"
     when /Leaves/, /Vine/
       "Blocky_Props_Leaves"
@@ -111,8 +113,6 @@ class DefMaker
       "Blocky_Props_Concrete"
     when /Terracotta/
       "Blocky_Props_Terracotta"
-    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone.*Torch/, /RedstoneDust/, /Comparator/, /Repeater/
-      "Blocky_Props_Redstone"
     when /furnace/i, 'Loom', 'Stonecutter', 'Smoker', 'SmokerOn', /Table$/
       "Blocky_Props_Craft"
     else

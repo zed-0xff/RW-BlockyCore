@@ -2,7 +2,7 @@
 require 'yaml'
 
 module CONFIG
-  DATA = YAML::load_file(File.join(File.dirname(__FILE__), "config.yml"))
+  DATA = YAML::load_file(File.join(File.dirname(__FILE__), "..", "config.yml"))
 
   class << self
     def assets_dir
