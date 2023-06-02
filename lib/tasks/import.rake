@@ -48,6 +48,12 @@ namespace :import do
     end
   end
 
+  desc "import some models"
+  task :model, :mask do |_, args|
+    require_relative "../model_parser"
+    ModelParser.new.process! args.mask
+  end
+
   desc "import models"
   task :models do
     require_relative "../model_parser"

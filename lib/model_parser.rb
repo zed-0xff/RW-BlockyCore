@@ -11,8 +11,8 @@ class ModelParser
     @defmaker = DefMaker.new
   end
 
-  def process!
-    Dir[File.join(CONFIG.assets_dir, "minecraft/models/block/*.json")].each do |fname|
+  def process! mask = "*"
+    Dir[File.join(CONFIG.assets_dir, "minecraft/models/block/#{mask}.json")].each do |fname|
       begin
         process_model fname
       rescue

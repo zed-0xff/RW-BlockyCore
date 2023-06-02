@@ -1,6 +1,7 @@
 assets_dir: ~/games/minecraft/assets
 render_types:
-  _log_horizontal$: table
+  _log$: table
+  _log_horizontal$: log_horizontal
   barrel: table
   beacon: table
   beehive|bee_nest: table

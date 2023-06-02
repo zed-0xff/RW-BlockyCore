@@ -53,7 +53,7 @@ class DefMaker
 
   def convert_designators!
     nTotal = 0
-    @designators.sort_by(&:last).each do |defName, nItems|
+    @designators.sort_by(&:first).each do |defName, nItems|
       nTotal += nItems
       printf "[*] %3d items in %s\n", nItems, defName
       add_def <<~EOF

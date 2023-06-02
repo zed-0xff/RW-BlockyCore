@@ -14,7 +14,7 @@ class ModelRenderer
   def render_all
     r = {}
     case model.render_type
-    when :"3d_model", :table_noborder, :table
+    when :"3d_model", :table_noborder, :table, :log, :log_horizontal
       Side.each_nsew do |side|
         r[side] = render(side)
       end
@@ -89,6 +89,29 @@ class ModelRenderer
     land_down_img(dst, side_tex)
   end
 
+  # same as table, but front tex is tiled, not scaled
+  def render_log side = Side.north
+    @border = true
+    dst = Image.new( width: 64, height: 64 )
+    up_rotated = model.render_top(side)
+    dst.copy_from up_rotated, dst_width: 64, dst_height: 32
+    side_tex = model.render_side(side)
+    dst.copy_from side_tex, dst_width: 32, dst_height: 32, dst_y: 32
+    dst.copy_from side_tex, dst_width: 32, dst_height: 32, dst_y: 32, dst_x: 32
+    mask!(dst)
+    land_down_img(dst, side_tex)
+  end
+
+  # front tex is replaced with lower part of top tex, only for east & west sides
+  def render_log_horizontal side = Side.north
+    return render_table(side) if side.north? || side.south?
+    @border = true
+    dst = Image.new( width: 64, height: 64 )
+    up_rotated = model.render_top(side)
+    dst.copy_from up_rotated, dst_width: 64, dst_height: 64
+    mask!(dst)
+  end
+
   # move _image_ down if it's not full height (stonecutter, enchanting_table, end_portal_frame*)
   def land_down_img img, side_tex
     y = 0
@@ -151,5 +174,6 @@ class ModelRenderer
         dst[x, 63] = Color::BLACK
       end
     end
+    dst
   end
 end
