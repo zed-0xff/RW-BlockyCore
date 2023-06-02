@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_AcaciaLogHorizontal</defName>
+    <label>acacia log horizontal</label>
+    <graphicData>
+      <texPath>Blocky/A/AcaciaLogHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_AcaciaLog</defName>
+    <label>acacia log</label>
+    <graphicData>
+      <texPath>Blocky/A/AcaciaLog</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
   <ThingDef ParentName="Blocky_Props_Base">
     <defName>Blocky_Props_AcaciaPlanks</defName>
     <label>acacia planks</label>
@@ -124,6 +142,24 @@
       <texPath>Blocky/B/BeetrootsStage3</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_BirchLogHorizontal</defName>
+    <label>birch log horizontal</label>
+    <graphicData>
+      <texPath>Blocky/B/BirchLogHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_BirchLog</defName>
+    <label>birch log</label>
+    <graphicData>
+      <texPath>Blocky/B/BirchLog</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base">
@@ -279,6 +315,24 @@
     <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
   </ThingDef>
 
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_DarkOakLogHorizontal</defName>
+    <label>dark oak log horizontal</label>
+    <graphicData>
+      <texPath>Blocky/D/DarkOakLogHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_DarkOakLog</defName>
+    <label>dark oak log</label>
+    <graphicData>
+      <texPath>Blocky/D/DarkOakLog</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
   <ThingDef ParentName="Blocky_Props_Base">
     <defName>Blocky_Props_DarkOakPlanks</defName>
     <label>dark oak planks</label>
@@ -405,6 +459,33 @@
     <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
   </ThingDef>
 
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_GlowItemFrame</defName>
+    <label>glow item frame</label>
+    <graphicData>
+      <texPath>Blocky/G/GlowItemFrame</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_GlowItemFrameMap</defName>
+    <label>glow item frame map</label>
+    <graphicData>
+      <texPath>Blocky/G/GlowItemFrameMap</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_HayBlockHorizontal</defName>
+    <label>hay block horizontal</label>
+    <graphicData>
+      <texPath>Blocky/H/HayBlockHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
   <ThingDef ParentName="Blocky_Props_Base_Multi">
     <defName>Blocky_Props_HayBlock</defName>
     <label>hay block</label>
@@ -412,6 +493,24 @@
       <texPath>Blocky/H/HayBlock</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Garden</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_ItemFrame</defName>
+    <label>item frame</label>
+    <graphicData>
+      <texPath>Blocky/I/ItemFrame</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_ItemFrameMap</defName>
+    <label>item frame map</label>
+    <graphicData>
+      <texPath>Blocky/I/ItemFrameMap</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base_Multi">
@@ -432,6 +531,24 @@
     <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
   </ThingDef>
 
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_JungleLogHorizontal</defName>
+    <label>jungle log horizontal</label>
+    <graphicData>
+      <texPath>Blocky/J/JungleLogHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_JungleLog</defName>
+    <label>jungle log</label>
+    <graphicData>
+      <texPath>Blocky/J/JungleLog</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
   <ThingDef ParentName="Blocky_Props_Base">
     <defName>Blocky_Props_JunglePlanks</defName>
     <label>jungle planks</label>
@@ -446,6 +563,15 @@
     <label>ladder</label>
     <graphicData>
       <texPath>Blocky/L/Ladder</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base">
+    <defName>Blocky_Props_Lava</defName>
+    <label>lava</label>
+    <graphicData>
+      <texPath>Blocky/L/Lava</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
   </ThingDef>
@@ -466,6 +592,24 @@
       <texPath>Blocky/L/Loom</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_MangroveLogHorizontal</defName>
+    <label>mangrove log horizontal</label>
+    <graphicData>
+      <texPath>Blocky/M/MangroveLogHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_MangroveLog</defName>
+    <label>mangrove log</label>
+    <graphicData>
+      <texPath>Blocky/M/MangroveLog</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base">
@@ -502,6 +646,24 @@
       <texPath>Blocky/N/NoteBlock</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Furniture</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_OakLogHorizontal</defName>
+    <label>oak log horizontal</label>
+    <graphicData>
+      <texPath>Blocky/O/OakLogHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_OakLog</defName>
+    <label>oak log</label>
+    <graphicData>
+      <texPath>Blocky/O/OakLog</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base">
@@ -745,6 +907,24 @@
       <texPath>Blocky/S/SoulTorch</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Misc</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_SpruceLogHorizontal</defName>
+    <label>spruce log horizontal</label>
+    <graphicData>
+      <texPath>Blocky/S/SpruceLogHorizontal</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_SpruceLog</defName>
+    <label>spruce log</label>
+    <graphicData>
+      <texPath>Blocky/S/SpruceLog</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Wood</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base">
