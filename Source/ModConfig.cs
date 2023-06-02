@@ -37,7 +37,7 @@ class CoreTab : SettingsTabBase {
 
 public class ModConfig : Mod
 {
-    public override string SettingsCategory() => "Blocky";
+    public override string SettingsCategory() => "Blocky *";
 
     public static Settings Settings { get; private set; }
 

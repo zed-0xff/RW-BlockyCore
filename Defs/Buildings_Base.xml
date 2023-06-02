@@ -21,22 +21,31 @@
     </graphicData>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_Base_Door" ParentName="DoorBase" Abstract="True">
-    <designationCategory>Blocky_Props</designationCategory>
+  <!-- stuffable -->
+  <ThingDef Name="Blocky_Props_DoorBase" ParentName="DoorBase" Abstract="True">
+    <label>door</label>
     <description>Divides rooms. Simple doors must be manually opened, which slows people down. The amount of slowdown depends on what the door is made of.</description>
     <statBases>
       <WorkToBuild>850</WorkToBuild>
-      <MaxHitPoints>104</MaxHitPoints>
     </statBases>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
-      <damageData><enabled>false</enabled></damageData> <!-- no damage marks because they don't move with the door -->
+      <damageData><enabled>false</enabled></damageData>
     </graphicData>
-    <designationHotKey>Misc1</designationHotKey>
+
+    <costStuffCount>25</costStuffCount>
+    <designationCategory>Blocky_Props</designationCategory>
     <uiIconScale>0.75</uiIconScale>
     <rotatable>true</rotatable>
+  </ThingDef>
 
-    <!-- remove defaults stuffs to keep original door colors -->
+  <!-- nonstuffable, to keep original door colors -->
+  <ThingDef Name="Blocky_Props_DoorBase_NonStuffable" ParentName="Blocky_Props_DoorBase" Abstract="True">
+    <statBases>
+      <MaxHitPoints>104</MaxHitPoints>
+    </statBases>
+
+    <costStuffCount Inherit="False" />
     <stuffCategories Inherit="False" />
     <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
   </ThingDef>

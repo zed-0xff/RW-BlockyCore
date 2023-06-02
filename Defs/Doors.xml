@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  <ThingDef Name="Blocky_Props_AcaciaDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_AcaciaDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_AcaciaDoor</defName>
     <label>acacia door</label>
     <graphicData>
@@ -10,7 +10,16 @@
     <uiIconPath>Blocky/Doors/AcaciaDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_BambooDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_AcaciaDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_AcaciaDoor_Stuffable</defName>
+    <label>"Acacia" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/AcaciaDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/AcaciaDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_BambooDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_BambooDoor</defName>
     <label>bamboo door</label>
     <graphicData>
@@ -20,7 +29,16 @@
     <uiIconPath>Blocky/Doors/BambooDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_BirchDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_BambooDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_BambooDoor_Stuffable</defName>
+    <label>"Bamboo" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/BambooDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/BambooDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_BirchDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_BirchDoor</defName>
     <label>birch door</label>
     <graphicData>
@@ -30,7 +48,16 @@
     <uiIconPath>Blocky/Doors/BirchDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_CrimsonDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_BirchDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_BirchDoor_Stuffable</defName>
+    <label>"Birch" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/BirchDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/BirchDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_CrimsonDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_CrimsonDoor</defName>
     <label>crimson door</label>
     <graphicData>
@@ -40,7 +67,16 @@
     <uiIconPath>Blocky/Doors/CrimsonDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_DarkOakDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_CrimsonDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_CrimsonDoor_Stuffable</defName>
+    <label>"Crimson" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/CrimsonDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/CrimsonDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_DarkOakDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_DarkOakDoor</defName>
     <label>dark oak door</label>
     <graphicData>
@@ -50,7 +86,16 @@
     <uiIconPath>Blocky/Doors/DarkOakDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_IronDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_DarkOakDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_DarkOakDoor_Stuffable</defName>
+    <label>"Dark Oak" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/DarkOakDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/DarkOakDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_IronDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_IronDoor</defName>
     <label>iron door</label>
     <graphicData>
@@ -60,7 +105,16 @@
     <uiIconPath>Blocky/Doors/IronDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_JungleDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_IronDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_IronDoor_Stuffable</defName>
+    <label>"Iron" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/IronDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/IronDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_JungleDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_JungleDoor</defName>
     <label>jungle door</label>
     <graphicData>
@@ -70,7 +124,16 @@
     <uiIconPath>Blocky/Doors/JungleDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_MangroveDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_JungleDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_JungleDoor_Stuffable</defName>
+    <label>"Jungle" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/JungleDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/JungleDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_MangroveDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_MangroveDoor</defName>
     <label>mangrove door</label>
     <graphicData>
@@ -80,7 +143,16 @@
     <uiIconPath>Blocky/Doors/MangroveDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_OakDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_MangroveDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_MangroveDoor_Stuffable</defName>
+    <label>"Mangrove" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/MangroveDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/MangroveDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_OakDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_OakDoor</defName>
     <label>oak door</label>
     <graphicData>
@@ -90,7 +162,16 @@
     <uiIconPath>Blocky/Doors/OakDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_SpruceDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_OakDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_OakDoor_Stuffable</defName>
+    <label>"Oak" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/OakDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/OakDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_SpruceDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_SpruceDoor</defName>
     <label>spruce door</label>
     <graphicData>
@@ -100,7 +181,16 @@
     <uiIconPath>Blocky/Doors/SpruceDoor_MenuIcon</uiIconPath>
   </ThingDef>
 
-  <ThingDef Name="Blocky_Props_WarpedDoor" ParentName="Blocky_Props_Base_Door">
+  <ThingDef Name="Blocky_Props_SpruceDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_SpruceDoor_Stuffable</defName>
+    <label>"Spruce" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/SpruceDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/SpruceDoor_Stuffable_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_WarpedDoor" ParentName="Blocky_Props_DoorBase_NonStuffable">
     <defName>Blocky_Props_WarpedDoor</defName>
     <label>warped door</label>
     <graphicData>
@@ -108,6 +198,15 @@
     </graphicData>
     <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/WarpedDoor_MenuIcon</uiIconPath>
+  </ThingDef>
+
+  <ThingDef Name="Blocky_Props_WarpedDoor_Stuffable" ParentName="Blocky_Props_DoorBase">
+    <defName>Blocky_Props_WarpedDoor_Stuffable</defName>
+    <label>"Warped" door</label>
+    <graphicData>
+      <texPath>Blocky/Doors/WarpedDoor_Stuffable_Mover</texPath>
+    </graphicData>
+    <uiIconPath>Blocky/Doors/WarpedDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
   <DesignatorDropdownGroupDef>
