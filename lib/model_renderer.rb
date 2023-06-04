@@ -28,7 +28,7 @@ class ModelRenderer
 
   # slow
   def detect_render_type
-    images = Side.all.map{ |side| model.render_side(side) }
+    images = Side.all.map{ |side| model.render_side(side) }.compact
     usz = images.map(&:export).uniq.size
     if usz == 1 || (usz == 2 && images.any?(&:empty?))
       model.render_type = :flat
@@ -47,7 +47,7 @@ class ModelRenderer
   end
 
   def render_flat side = nil
-    return model.render_side(side).scaled(4) if side
+    return model.render_side(side)&.scaled(4) if side
 
     %w'up north south east west'.each do |side|
       img = model.render_side(Side[side])

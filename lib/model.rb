@@ -47,6 +47,7 @@ class Model
   end
 
   def self._load key
+    return nil if key['builtin/']
     fname = File.join(CONFIG.assets_dir, "minecraft", "models", key) + ".json"
     klass = CUSTOM_RENDERERS[key] || Model
     klass.new(key, JSON.load_file(fname))
@@ -92,7 +93,7 @@ class Model
   class NoTextureError < StandardError; end
 
   def render_top for_side
-    render_side(Side.up).rotated(for_side.rotation)
+    render_side(Side.up)&.rotated(for_side.rotation)
   end
 
   def render_side side, tex_root: self, elements: self.elements
@@ -149,11 +150,24 @@ class Model
       end
     end
 
-    if img.pixels.all?(&:transparent?) && textures['particle'] && tex_root == self
-      tex = resolve_and_load_texture(textures['particle'], tex_root)
-      return nil if tex.nil? && @abstract
+    if img.pixels.all?(&:transparent?) && tex_root == self
+      if textures.size == 1
+        return nil if ['cross', 'crop'].include?(textures.keys.first) && side.up?
 
-      img.copy_from(tex)
+        tex = resolve_and_load_texture(textures.values.first, tex_root)
+        img.copy_from(tex)
+        return img unless img.pixels.all?(&:transparent?)
+      end
+
+      %w'particle layer0'.each do |t|
+        if textures[t]
+          tex = resolve_and_load_texture(textures[t], tex_root)
+          next if !tex
+          img.copy_from(tex)
+          return img unless img.pixels.all?(&:transparent?)
+        end
+      end
+      return nil
     end
 
     img
@@ -182,7 +196,7 @@ end
 
 if __FILE__ == $0
   key = ARGV.first
-  key = "block/#{key}" unless key['block/']
+  key = "block/#{key}" unless key['/']
   m = Model.find key
   m.debug = true
 
@@ -199,7 +213,9 @@ if __FILE__ == $0
     sides = [ARGV[1]]
   end
   sides.each do |d|
-    img = m.render_side(Side[d]).scaled(4)
+    img = m.render_side(Side[d])&.scaled(4)
+    next unless img
+
     img.save "#{d}.png"
     puts "[=] #{d}.png"
   end

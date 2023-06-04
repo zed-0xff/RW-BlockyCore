@@ -79,6 +79,7 @@ ignore:
   - slab
   - stairs
   - turtle_egg
+  - thin_block$
   - wall_(post|side)
   - wall_torch
   - button$
