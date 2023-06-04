@@ -10,11 +10,19 @@ namespace Blocky.Core;
 public enum TabShowMode{ DevModeOnly, GodModeOnly, Always, Never };
 
 public class Settings : ModSettings {
+    public bool debug;
     public TabShowMode tabShowMode = TabShowMode.DevModeOnly;
 
     public override void ExposeData() {
+        Scribe_Values.Look(ref debug, "debug", false);
         Scribe_Values.Look(ref tabShowMode, "tabShowMode", TabShowMode.DevModeOnly);
         base.ExposeData();
+    }
+
+    public static bool Debug{
+        get {
+            return ModConfig.Settings.debug;
+        }
     }
 }
 
@@ -22,6 +30,8 @@ class CoreTab : SettingsTabBase {
     public override string Title => "Core";
 
     public override void Draw(Listing_Standard l){
+        l.CheckboxLabeled("Debug", ref ModConfig.Settings.debug);
+
         l.LabelDouble("Show 'Blocky.Core' architect menu tab", "");
         foreach (TabShowMode x in Enum.GetValues(typeof(TabShowMode))) {
             if( l.RadioButton(GenText.SplitCamelCase(x.ToString()), ModConfig.Settings.tabShowMode == x, 20) ){
