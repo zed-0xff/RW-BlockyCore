@@ -16,6 +16,7 @@ static class Patch_MainTabWindow_Architect {
     private static readonly FastInvokeHandler _ResetAndUnfocusQuickSearch = MethodInvoker.GetHandler(m_ResetAndUnfocusQuickSearch);
 
     static bool prevMode = true; // as unpatched
+    public static bool needClear = false;
 
     static bool WantToShow(){
         switch( ModConfig.Settings.tabShowMode ){
@@ -31,16 +32,21 @@ static class Patch_MainTabWindow_Architect {
         return true;
     }
 
+    static void check(MainTabWindow_Architect __instance){
+        bool curMode = WantToShow();
+        if( prevMode != curMode || needClear ){
+            prevMode = curMode;
+            needClear = false;
+            _CacheDesPanels(__instance);
+            _ResetAndUnfocusQuickSearch(__instance); // or panels will have gray color text
+        }
+    }
+
     // clear cache if needed
     [HarmonyPatch(typeof(MainTabWindow_Architect), nameof(MainTabWindow_Architect.DoWindowContents))]
     static class Patch_DoWindowContents {
         static void Prefix( MainTabWindow_Architect __instance ){
-            bool curMode = WantToShow();
-            if( prevMode != curMode ){
-                prevMode = curMode;
-                _CacheDesPanels(__instance);
-                _ResetAndUnfocusQuickSearch(__instance); // or panels will have gray color text
-            }
+            check(__instance);
         }
     }
 
@@ -48,15 +54,9 @@ static class Patch_MainTabWindow_Architect {
     [HarmonyPatch(typeof(MainTabWindow_Architect), "get_WinHeight")]
     static class Patch_getWinHeight {
         static void Prefix( MainTabWindow_Architect __instance ){
-            bool curMode = WantToShow();
-            if( prevMode != curMode ){
-                prevMode = curMode;
-                _CacheDesPanels(__instance);
-                _ResetAndUnfocusQuickSearch(__instance); // or panels will have gray color text
-            }
+            check(__instance);
         }
     }
-
 
     // hide panel if needed
     [HarmonyPatch(typeof(MainTabWindow_Architect), "CacheDesPanels")]
