@@ -24,7 +24,7 @@ class Model
     @elements = data['elements'].dup || []
     @abstract = false
     @name = @key.sub("block/", "")
-    @render_type = CONFIG.render_types.find{ |x| x[0].match(@name) }&.last&.to_sym
+    @render_type = CONFIG.render_types.find{ |x| x[0].match(@key) }&.last&.to_sym
   end
 
   def abstract?

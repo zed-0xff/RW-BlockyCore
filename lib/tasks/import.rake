@@ -35,6 +35,8 @@ task :import => "import:all"
 namespace :import do
   task :all => [:prune, :models, :doors, :dedup, :defs]
 
+  task :models => [:blocks, :items]
+
   desc "clear all imported data"
   task :prune do
     system "rm -rf Textures/Blocky/Alpha"
@@ -51,13 +53,20 @@ namespace :import do
   desc "import some models"
   task :model, :mask do |_, args|
     require_relative "../model_parser"
-    ModelParser.new.process! args.mask
+    a = args.mask.split("/")
+    ModelParser.new(a[0]).process! a[1]
   end
 
-  desc "import models"
-  task :models do
+  desc "import blocks"
+  task :blocks do
     require_relative "../model_parser"
-    ModelParser.new.process!
+    ModelParser.new('block').process!
+  end
+
+  desc "import items"
+  task :items do
+    require_relative "../model_parser"
+    #ModelParser.new('item').process!
   end
 
   desc "import doors"
