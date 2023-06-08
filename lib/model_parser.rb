@@ -38,30 +38,37 @@ class ModelParser
     model = Model.find(key)
     return if model.abstract?
 
-    renderer = ModelRenderer.new(model)
-    renderer.detect_render_type unless model.render_type
-    return if model.abstract?
-
-    defName = @defmaker.name2defName(name.camelize)
-    released = @defmaker.released?(defName)
-
-    images = renderer.render_all
-    dst_dir = File.join("Textures", "Blocky", (released ? "" : "Alpha"), name[0].upcase)
-    FileUtils.mkdir_p dst_dir
-
-    if images.size == 1
-      dst_fname = File.join(dst_dir, name.camelize) + ".png"
-      img = images.values[0]
-      return if img.nil?
-      img.save(dst_fname)
-    else
-      images.each do |side, img|
-        dst_fname = File.join(dst_dir, name.camelize) + "_#{side}.png"
-        img.save(dst_fname)
-      end
+    unless model.render_types
+      renderer = ModelRenderer.new(model, '')
+      renderer.detect_render_type
+      return if model.abstract?
     end
 
-    @render_types[model.name] = model.render_type.to_s
+    model.render_types.each do |suffix, rtype|
+      name2 = name + suffix
+      defName = @defmaker.name2defName(name2.camelize)
+      released = @defmaker.released?(defName)
+
+      renderer = ModelRenderer.new(model, suffix)
+      images = renderer.render_all
+      dst_dir = File.join("Textures", "Blocky", (released ? "" : "Alpha"), name2[0].upcase)
+      FileUtils.mkdir_p dst_dir
+
+      if images.size == 1
+        dst_fname = File.join(dst_dir, name2.camelize) + ".png"
+        img = images.values[0]
+        return if img.nil?
+        img.save(dst_fname)
+      else
+        images.each do |side, img|
+          dst_fname = File.join(dst_dir, name2.camelize) + "_#{side}.png"
+          img.save(dst_fname)
+        end
+      end
+
+      @render_types[name2] = rtype.to_s
+    end
+
   rescue Model::NoTextureError
   end
 end

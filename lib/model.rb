@@ -14,7 +14,7 @@ class Model
   CUSTOM_RENDERERS = {}
 
   attr_reader :key, :textures, :elements, :name
-  attr_accessor :render_type, :abstract, :debug
+  attr_accessor :render_types, :abstract, :debug
 
   def initialize key, data
     #@data = data
@@ -24,7 +24,20 @@ class Model
     @elements = data['elements'].dup || []
     @abstract = false
     @name = @key.sub("block/", "")
-    @render_type = CONFIG.render_types.find{ |x| x[0].match(@key) }&.last&.to_sym
+    rtypes = CONFIG.render_types.find{ |x| x[0].match(@key) }&.last
+    case rtypes
+    when Hash
+      @render_types = rtypes.map{ |k,v| [k, v.to_sym] }.to_h
+    when String
+      @render_types = { "" => rtypes.to_sym }
+    when nil
+    else
+      raise "unexpected render type(s): #{rtypes}"
+    end
+  end
+
+  def render_type= rtype
+    @render_types = { "" => rtype.to_sym }
   end
 
   def abstract?
