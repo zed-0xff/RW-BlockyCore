@@ -7,9 +7,10 @@ Also adds 100+ props from the Minecraft.
 
 ## You may also like...
 
-[![Blocky Signs](https://steamuserimages-a.akamaihd.net/ugc/2023851528276814290/E79076F90A51ADDFEFC3F3900B7EEBF42EA20655/?imw=268&imh=151&ima=fit&impolicy=Letterbox)](https://steamcommunity.com/sharedfiles/filedetails/?id=2985030059)
+[![Blocky Signs](https://steamuserimages-a.akamaihd.net/ugc/2023851528284138822/5EEB2C5777C1EFCE33571A675C2C0081257AE690/?imw=268&imh=151&ima=fit&impolicy=Letterbox)](https://steamcommunity.com/sharedfiles/filedetails/?id=2985030059)
 [![Blocky Doors](https://steamuserimages-a.akamaihd.net/ugc/2023851270029807877/9ADACA68FC61BB8B29FB66874A734578EF37EDD7/?imw=268&imh=151&ima=fit&impolicy=Letterbox)](https://steamcommunity.com/sharedfiles/filedetails/?id=2983962533)
 [![Blocky Trees](https://steamuserimages-a.akamaihd.net/ugc/2023851270025376422/A564E01BE53E5BA1D902942FD8C963E30746045F/?imw=268&imh=151&ima=fit&impolicy=Letterbox)](https://steamcommunity.com/sharedfiles/filedetails/?id=2983608933)
+[![Blocky Logs](https://steamuserimages-a.akamaihd.net/ugc/2021600103462817131/8E593B18A4EE94B8CDC9570FE14977F83D39C482/?imw=268&imh=151&ima=fit&impolicy=Letterbox)](https://steamcommunity.com/sharedfiles/filedetails/?id=2986960956)
 
 https://github.com/zed-0xff/RW-BlockyCore
 

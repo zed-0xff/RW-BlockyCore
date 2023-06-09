@@ -4,6 +4,8 @@ require 'digest/md5'
 require 'nokogiri'
 require 'set'
 
+require_relative 'common'
+
 class DefMaker
   def initialize
     @was = {}
@@ -81,7 +83,7 @@ class DefMaker
       "Blocky_Props_Ores"
     when /Bricks$/, /Tiles$/
       "Blocky_Props_Bricks"
-    when /Planks$/, /Mosaic$/
+    when /Planks/, /Mosaic$/
       "Blocky_Props_Planks"
     when /Wool$/
       "Blocky_Props_Wool"
@@ -133,7 +135,7 @@ class DefMaker
   end
 
   def name2defName name
-    "Blocky_Props_" + name.tr("0123456789", "ABCDEFGHIJ")
+    "Blocky_Props_" + name.sub(/\d+$/){ |x| x.tr("0123456789", "ABCDEFGHIJ") }
   end
 
   def add_def_from_texture fname, parentName: nil, name: nil, texPath: nil

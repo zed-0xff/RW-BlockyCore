@@ -11,18 +11,21 @@ class ModelRenderer
     @border = false
     @suffix = suffix
     @render_type = model.render_types&.[](suffix)
+    @filters = []
+    if @render_type.is_a?(Array)
+      @filters = @render_type[1..-1]
+      @render_type = @render_type[0]
+    end
   end
 
   def render_all
     r = {}
-    case @render_type
-    when :"3d_model", :table_noborder, :table, :log, :log_horizontal
+    case @render_type.to_s
+    when /table/, /^log/
       Side.each_nsew do |side|
         r[side] = render(side)
       end
-    when :flat, :side_south
-      r[:flat] = render
-    when :"3d_diagonal"
+    when 'flat', 'side_south', /3d/, 'cube'
       r[:flat] = render
     else
       raise "[?] unexpected render type: #{@render_type}"
@@ -48,7 +51,11 @@ class ModelRenderer
 
   def render side = nil, type = ""
     detect_render_type unless @render_type
-    side ? send("render_#{@render_type}", side) : send("render_#{@render_type}")
+    r = side ? send("render_#{@render_type}", side) : send("render_#{@render_type}")
+    @filters.each do |f|
+      r = r.send(f)
+    end
+    r
   end
 
   def render_flat side = nil
@@ -167,10 +174,10 @@ class ModelRenderer
   def render_3d_diagonal side = nil, zoom = 1
     dst = Image.new( width: 64, height: 64 )
 
-    up_rotated = land_down_tex(model.render_top(Side.north)).sheared(-1,0)
+    up_rotated = land_down_tex(model.render_top(Side.north)).shear(-1,0)
     dst.copy_from up_rotated, dst_x: zoom == 1 ? 16 : 0, dst_y: zoom == 1 ? 16 : 0, dst_width: zoom*32, dst_height: zoom*16
 
-    side_tex = model.render_side(Side.west).sheared(0,-1)
+    side_tex = model.render_side(Side.west).shear(0,-1)
     dst.copy_from side_tex, dst_x: 32, dst_y: zoom == 1 ? 15 : -2, dst_width: zoom*16, dst_height: zoom*32
 
     front_tex = model.render_side(Side.north)
@@ -178,6 +185,68 @@ class ModelRenderer
 
     @mask_fname = 'mask_diagonal.png'
     mask!(dst)
+  end
+
+  def render_3d_hd side = nil
+    dst = Image.new( width: 64, height: 64 )
+
+    up_rotated = land_down_tex(model.render_top(Side.north)).shear(-1,0)
+    dst.copy_from up_rotated, dst_x: 0, dst_y: 16, dst_width: 32, dst_height: 16
+    dst.copy_from up_rotated, dst_x: 16, dst_y: 16, dst_width: 32, dst_height: 16
+
+    side_tex = model.render_side(Side.west).shear(0,-1)
+    dst.copy_from side_tex, dst_x: 32, dst_y: 16, dst_width: 16, dst_height: 32
+    dst.copy_from side_tex, dst_x: 32, dst_y: 32, dst_width: 16, dst_height: 32
+
+    front_tex = model.render_side(Side.north)
+    dst.copy_from front_tex, dst_x:  0, dst_y: 32
+    dst.copy_from front_tex, dst_x: 16, dst_y: 32
+    dst.copy_from front_tex, dst_x:  0, dst_y: 32+16
+    dst.copy_from front_tex, dst_x: 16, dst_y: 32+16
+
+    @mask_fname = 'mask_diagonal.png'
+    mask!(dst)
+  end
+
+  def render_cube side = nil
+    dst = Image.new( width: 64, height: 64 )
+
+    up = model.render_top(Side.north)
+      .scale(2,1)
+#      .add_border
+      .shear(-1, 0)
+
+    dst.copy_from up, dst_x: 0, dst_y: 16, dst_width: 48, dst_height: 16
+
+    side_tex = model.render_side(Side.west)
+      .scale(1,2)
+#      .add_border
+      .shear(0, -1)
+
+    dst.copy_from side_tex, dst_x: 32, dst_y: 16, dst_width: 16, dst_height: 48
+
+    front_tex = model.render_side(Side.north)
+      .scale(2)
+#      .add_border
+
+    dst.copy_from front_tex, dst_x:  0, dst_y: 32, dst_height:32, dst_width: 32
+
+    @mask_fname = 'mask_diagonal.png'
+    src = mask!(dst)
+
+    dst = Image.new(width: 64, height: 64)
+    dst.copy_from(src, dst_x: 8, dst_y: -8)
+
+#    8.upto(40) do |x|
+#      dst[x, 24] = Color::BLACK
+#      dst[x, 25] = Color::BLACK
+#
+#      dst[x, 54] = Color::BLACK
+#      dst[x, 55] = Color::BLACK
+#
+#    end
+
+    dst.inline!
   end
 
   def mask! dst, y0 = 0

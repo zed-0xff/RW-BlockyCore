@@ -87,41 +87,16 @@ class DoorMaker < DefMaker
     EOF
   end
 
-  def to_grayscale img
-    avg2 = img.pixels.find_all{ |p| !p.transparent? && !p.black? }.map(&:to_grayscale)
-    avg2 = avg2.inject(:+) / avg2.size
-
-    corr = avg2 < 128 ? (128-avg2)*2 : 0
-
-    a = [0]*16
-    img.each_pixel do |c,x,y|
-      next if c.transparent? || c.black?
-
-      g = [c.to_grayscale + corr, 255].min
-      img[x,y] = Color.new(g,g,g, c.alpha)
-      a[g/16] += 1
-    end
-#    avg = 0
-#    n = 0
-#    a.each_with_index do |x,i|
-#      avg += x*i
-#      n += i
-#    end
-#    avg /= n
-#    printf "[.] %s avg=%3d avg2=%3d\n", a.map{ |x| "%4d" % x }.join(' '), avg, avg2
-    img
-  end
-
   def render_stuffable top_fname
     name = File.basename(top_fname).split(/_top.png/).first.camelize
     puts "[.] #{name}"
 
-    dst = to_grayscale(render_mover(top_fname))
+    dst = render_mover(top_fname).to_grayscale
     fname = File.join(TEX_REL_PATH, name + "_Stuffable_Mover.png")
     dst.save(fname)
     texPath = fname.sub(".png","").sub(/^Textures\//, "")
 
-    dst = to_grayscale(render_icon(dst))
+    dst = render_icon(dst).to_grayscale
     fname = File.join(TEX_REL_PATH, name + "_Stuffable_MenuIcon.png")
     dst.save(fname)
     uiIconPath = fname.sub(".png","").sub(/^Textures\//, "")
@@ -139,6 +114,7 @@ class DoorMaker < DefMaker
           <graphicData>
             <texPath>#{texPath}</texPath>
           </graphicData>
+          <designatorDropdown>#{designator}</designatorDropdown>
           <uiIconPath>#{uiIconPath}</uiIconPath>
         </ThingDef>
     EOF

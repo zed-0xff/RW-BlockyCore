@@ -16,6 +16,7 @@
     <graphicData>
       <texPath>Blocky/Doors/AcaciaDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/AcaciaDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -35,6 +36,7 @@
     <graphicData>
       <texPath>Blocky/Doors/BambooDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/BambooDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -54,6 +56,7 @@
     <graphicData>
       <texPath>Blocky/Doors/BirchDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/BirchDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -73,6 +76,7 @@
     <graphicData>
       <texPath>Blocky/Doors/CrimsonDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/CrimsonDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -92,6 +96,7 @@
     <graphicData>
       <texPath>Blocky/Doors/DarkOakDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/DarkOakDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -111,6 +116,7 @@
     <graphicData>
       <texPath>Blocky/Doors/IronDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/IronDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -130,6 +136,7 @@
     <graphicData>
       <texPath>Blocky/Doors/JungleDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/JungleDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -149,6 +156,7 @@
     <graphicData>
       <texPath>Blocky/Doors/MangroveDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/MangroveDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -168,6 +176,7 @@
     <graphicData>
       <texPath>Blocky/Doors/OakDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/OakDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -187,6 +196,7 @@
     <graphicData>
       <texPath>Blocky/Doors/SpruceDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/SpruceDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 
@@ -206,6 +216,7 @@
     <graphicData>
       <texPath>Blocky/Doors/WarpedDoor_Stuffable_Mover</texPath>
     </graphicData>
+    <designatorDropdown>Blocky_Props_Doors</designatorDropdown>
     <uiIconPath>Blocky/Doors/WarpedDoor_Stuffable_MenuIcon</uiIconPath>
   </ThingDef>
 

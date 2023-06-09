@@ -39,6 +39,10 @@ render_types:
   block/.+_log_horizontal$:
     "": log_horizontal
     _diagonal: 3d_diagonal
+    _diagonal_stuffable: [3d_diagonal, to_grayscale]
+  block/.*planks$:
+    "": flat
+    _3d: cube
   block/beacon: table
   block/comparator: flat
   block/composter$: table

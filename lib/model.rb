@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
-
-require 'json'
-require 'zpng'
-
-require_relative 'config'
+require_relative 'common'
 require_relative 'side'
 
 class Model
@@ -27,9 +23,9 @@ class Model
     rtypes = CONFIG.render_types.find{ |x| x[0].match(@key) }&.last
     case rtypes
     when Hash
-      @render_types = rtypes.map{ |k,v| [k, v.to_sym] }.to_h
+      @render_types = rtypes.map{ |k,v| [k, v] }.to_h
     when String
-      @render_types = { "" => rtypes.to_sym }
+      @render_types = { "" => rtypes }
     when nil
     else
       raise "unexpected render type(s): #{rtypes}"
@@ -37,7 +33,7 @@ class Model
   end
 
   def render_type= rtype
-    @render_types = { "" => rtype.to_sym }
+    @render_types = { "" => rtype }
   end
 
   def abstract?
