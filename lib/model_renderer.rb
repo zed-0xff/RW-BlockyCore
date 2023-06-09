@@ -164,7 +164,7 @@ class ModelRenderer
     land_down_img(dst, side_tex)
   end
 
-  def render_3d_diagonal side = nil, zoom = 2
+  def render_3d_diagonal side = nil, zoom = 1
     dst = Image.new( width: 64, height: 64 )
 
     up_rotated = land_down_tex(model.render_top(Side.north)).sheared(-1,0)

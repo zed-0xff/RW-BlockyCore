@@ -35,6 +35,7 @@ render_types:
   block/.*tnt: table
   block/.*torch: side_south
   block/.+_log$: table
+  block/bamboo_block_z: 3d_diagonal
   block/.+_log_horizontal$:
     "": log_horizontal
     _diagonal: 3d_diagonal

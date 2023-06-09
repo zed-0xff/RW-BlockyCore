@@ -91,7 +91,7 @@ class DefMaker
       "Blocky_Props_Potted"
     when /Farmland/, /Soil$/, 'Mud', /Sand$/, 'Clay', /Dirt$/
       "Blocky_Props_Soil"
-    when /Wood$/, /Log$/, /LogHorizontal/
+    when /Wood$/, /Log$/, /LogHorizontal/, /^BambooBlock/
       "Blocky_Props_Wood"
     when /^Bee/, /Melon/, 'Cactus', /Pumpkin/, /HayBlock/, 'HoneyBlock', 'JackOLantern', /Stage\d/, /Age\d/, 'Composter', /NetherWart/, /Mushroom$/, 'WarpedFungus', /Carrot/
       "Blocky_Props_Garden"
