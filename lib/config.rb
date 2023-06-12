@@ -16,5 +16,9 @@ module CONFIG
     def render_types
       @render_types ||= DATA['render_types'].map{ |k,v| [Regexp.new(k),v] }.to_h
     end
+
+    def [] k
+      DATA[k]
+    end
   end
 end

@@ -111,6 +111,13 @@ class Model
     img = parent ? parent.render_side(side, tex_root: tex_root) : Image.new(width: 16, height: 16)
     return nil if img.nil?
 
+    if textures.keys == ['cross'] # brown_mushroom, red_mushroom
+      return nil if side.up?
+      tex = resolve_and_load_texture(textures.values.first, tex_root)
+      img.copy_from tex
+      return img
+    end
+
     # kinda z-index
     els = elements.sort_by(&side.z_sort_proc)
     els.each do |el|

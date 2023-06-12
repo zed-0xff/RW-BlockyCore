@@ -843,7 +843,16 @@
     <graphicData>
       <texPath>Blocky/R/Redstone</texPath>
     </graphicData>
-    <designatorDropdown>Blocky_Props_StonyB</designatorDropdown>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_RedstoneBlock</defName>
+    <label>redstone block</label>
+    <graphicData>
+      <texPath>Blocky/R/RedstoneBlock</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base_Multi">
@@ -887,15 +896,6 @@
     <label>repeater off</label>
     <graphicData>
       <texPath>Blocky/R/RepeaterOff</texPath>
-    </graphicData>
-    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
-  </ThingDef>
-
-  <ThingDef ParentName="Blocky_Props_Base_Multi">
-    <defName>Blocky_Props_RepeaterOn</defName>
-    <label>repeater on (unreleased)</label>
-    <graphicData>
-      <texPath>Blocky/R/RepeaterOn</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
   </ThingDef>

@@ -71,7 +71,9 @@ class DefMaker
     case name
     when 'Bookshelf', /^Barrel/, 'Jukebox', 'NoteBlock', /Lamp/, /Hopper/, /Cauldron/
       "Blocky_Props_Furniture"
-    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone.*Torch/, /RedstoneDust/, /Comparator/, /Repeater/, /PressurePlate/, /Detector/
+    when /Ore$/
+      "Blocky_Props_Ores"
+    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone/, /Comparator/, /Repeater/, /PressurePlate/, /Detector/
       "Blocky_Props_Redstone"
     when /Door/
       "Blocky_Props_Doors"
@@ -79,8 +81,6 @@ class DefMaker
       "Blocky_Props_Trapdoors"
     when /Fence/
       "Blocky_Props_Fences"
-    when /Ore$/
-      "Blocky_Props_Ores"
     when /Bricks$/, /Tiles$/
       "Blocky_Props_Bricks"
     when /Planks/, /Mosaic$/
@@ -140,7 +140,7 @@ class DefMaker
 
   def add_def_from_texture fname, parentName: nil, name: nil, texPath: nil
     name ||= File.basename(fname).split(/[_.]/).first
-    return if @was[name]
+    return if @was[name] || CONFIG['manual'].include?(name)
 
     @was[name] = true
 

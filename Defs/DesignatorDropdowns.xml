@@ -5,6 +5,10 @@
   </DesignatorDropdownGroupDef>
 
   <DesignatorDropdownGroupDef>
+    <defName>Blocky_Props_Carpet</defName>
+  </DesignatorDropdownGroupDef>
+
+  <DesignatorDropdownGroupDef>
     <defName>Blocky_Props_Concrete</defName>
   </DesignatorDropdownGroupDef>
 

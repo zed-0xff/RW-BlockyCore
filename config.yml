@@ -50,6 +50,7 @@ render_types:
   block/potted_: side_south
   block/repeater: flat
   block/daylight_detector.*: table
+  block/.*_block: table
 
 ignore:
   - block/air$
@@ -63,6 +64,7 @@ ignore:
   - block/orientable
   - block/piston_base
   - block/piston_head
+  - block/repeater_on # manual
   - _[nsew]+$
   - _alt$
   - _door_bottom
@@ -94,3 +96,6 @@ ignore:
   - wall_torch
   - button$
   - button_pressed$
+
+manual:
+  - RepeaterOn
