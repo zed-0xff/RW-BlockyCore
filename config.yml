@@ -25,6 +25,7 @@ render_types:
   block/.*piston: table
   block/.*portal_frame: table
   block/.*redstone_lamp: table
+  block/redstone_dust.*: side_south
   block/.*respawn_anchor$: table
   block/.*respawn_anchor: table
   block/.*scaffolding_stable: table
@@ -48,6 +49,7 @@ render_types:
   block/composter$: table
   block/potted_: side_south
   block/repeater: flat
+  block/daylight_detector.*: table
 
 ignore:
   - block/air$
@@ -81,6 +83,7 @@ ignore:
   - lectern
   - moving_piston$
   - pane_noside$
+  - pressure_plate_down
   - sea_pickle
   - _sign$ # rendered as an entity
   - slab

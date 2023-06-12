@@ -33,6 +33,7 @@
 - Blocky_Props_CarvedPumpkin
 - Blocky_Props_Cauldron
 - Blocky_Props_Clay
+- Blocky_Props_Clock
 - Blocky_Props_CoarseDirt
 - Blocky_Props_Composter
 - Blocky_Props_CraftingTable
@@ -47,6 +48,8 @@
 - Blocky_Props_Dirt
 - Blocky_Props_Dispenser
 - Blocky_Props_Dropper
+- Blocky_Props_DaylightDetector
+- Blocky_Props_DaylightDetectorInverted
 - Blocky_Props_EnchantingTable
 - Blocky_Props_EndPortalFrame
 - Blocky_Props_EndPortalFrameFilled
@@ -98,10 +101,12 @@
 - Blocky_Props_RailCorner
 - Blocky_Props_RedMushroom
 - Blocky_Props_RedSand
+- Blocky_Props_Redstone
 - Blocky_Props_RedstoneLamp
 - Blocky_Props_RedstoneLampOn
 - Blocky_Props_RedstoneTorch
 - Blocky_Props_RedstoneTorchOff
+- Blocky_Props_RepeaterOff
 - Blocky_Props_RootedDirt
 - Blocky_Props_Sand
 - Blocky_Props_SmithingTable

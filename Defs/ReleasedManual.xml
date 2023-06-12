@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="Blocky_Props_Base_Multi">
+    <defName>Blocky_Props_RepeaterOn</defName>
+    <label>repeater off</label>
+    <graphicData>
+      <texPath>Blocky/R/RepeaterOn</texPath>
+      <drawSize>(1.5, 1.5)</drawSize>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+  </ThingDef>
+</Defs>

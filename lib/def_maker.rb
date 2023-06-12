@@ -71,7 +71,7 @@ class DefMaker
     case name
     when 'Bookshelf', /^Barrel/, 'Jukebox', 'NoteBlock', /Lamp/, /Hopper/, /Cauldron/
       "Blocky_Props_Furniture"
-    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone.*Torch/, /RedstoneDust/, /Comparator/, /Repeater/, /PressurePlate/
+    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone.*Torch/, /RedstoneDust/, /Comparator/, /Repeater/, /PressurePlate/, /Detector/
       "Blocky_Props_Redstone"
     when /Door/
       "Blocky_Props_Doors"

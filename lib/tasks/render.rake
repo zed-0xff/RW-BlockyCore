@@ -4,9 +4,13 @@ task :render, :model do |_, args|
   require_relative '../model_renderer'
 
   key = args.model
-  key = "block/#{key}" unless key['block/']
+  key = "block/#{key}" unless key['/']
   m = Model.find(key)
-  m.detect_render_type unless m.render_types
+
+  unless m.render_types
+    r = ModelRenderer.new(m, '')
+    r.detect_render_type 
+  end
 
   m.render_types.each do |suffix, rtype|
     r = ModelRenderer.new(m, suffix)
