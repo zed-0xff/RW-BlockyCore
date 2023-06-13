@@ -64,7 +64,8 @@ ignore:
   - block/orientable
   - block/piston_base
   - block/piston_head
-  - block/repeater_on # manual
+  - block/repeater_on   # manual
+  - block/tripwire_hook # manual
   - _[nsew]+$
   - _alt$
   - _door_bottom
@@ -99,3 +100,4 @@ ignore:
 
 manual:
   - RepeaterOn
+  - TripwireHook

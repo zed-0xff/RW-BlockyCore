@@ -73,7 +73,7 @@ class DefMaker
       "Blocky_Props_Furniture"
     when /Ore$/
       "Blocky_Props_Ores"
-    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone/, /Comparator/, /Repeater/, /PressurePlate/, /Detector/
+    when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone/, /Comparator/, /Repeater/, /PressurePlate/, /Detector/, /Tripwire/
       "Blocky_Props_Redstone"
     when /Door/
       "Blocky_Props_Doors"
