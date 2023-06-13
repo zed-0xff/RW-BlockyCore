@@ -13,8 +13,8 @@ class Side
   # XXX very likely not all z_sort_proc funcs are the right ones
   NORTH = new('north', 180, [0, 1], Proc.new{|el| el.dig('to', 2) } ).freeze
   SOUTH = new('south',   0, [0, 1], Proc.new{|el| el.dig('to', 2) } ).freeze
-  EAST  = new('east',   90, [2, 1], Proc.new{|el| el.dig('to', 2) } ).freeze
-  WEST  = new('west',  270, [2, 1], Proc.new{|el| el.dig('to', 2) } ).freeze
+  EAST  = new('east',  270, [2, 1], Proc.new{|el| el.dig('to', 2) } ).freeze
+  WEST  = new('west',   90, [2, 1], Proc.new{|el| el.dig('to', 2) } ).freeze
   UP    = new('up',      0, [0, 2], Proc.new{|el| el.dig('to', 1) } ).freeze
 
   ALL = [UP, NORTH, SOUTH, EAST, WEST].freeze

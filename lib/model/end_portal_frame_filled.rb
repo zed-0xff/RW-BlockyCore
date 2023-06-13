@@ -12,7 +12,7 @@ class Model
         dst.copy_from tex, dst_y: 8, src_height: 4
       else
         dst.copy_from tex, dst_y: 8, src_height: 4
-        tex = tex.rotated(90)
+        tex = tex.rotated(-90)
         dst.copy_from tex, dst_y: 0, dst_x: 4, src_x: 4, src_y: 4
       end
       dst
