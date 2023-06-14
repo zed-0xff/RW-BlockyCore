@@ -721,15 +721,6 @@
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base_Multi">
-    <defName>Blocky_Props_PistonHead</defName>
-    <label>piston head (unreleased)</label>
-    <graphicData>
-      <texPath>Blocky/P/PistonHead</texPath>
-    </graphicData>
-    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
-  </ThingDef>
-
-  <ThingDef ParentName="Blocky_Props_Base_Multi">
     <defName>Blocky_Props_Piston</defName>
     <label>piston</label>
     <graphicData>

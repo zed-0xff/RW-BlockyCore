@@ -62,8 +62,8 @@ ignore:
   - block/stem_growth
   - block/stripped
   - block/orientable
-  - block/piston_base
-  - block/piston_head
+  - block/piston_base   # manual
+  - block/piston_head   # manual
   - block/repeater_on   # manual
   - block/tripwire_hook # manual
   - _[nsew]+$

@@ -22,7 +22,7 @@ class DefMaker
   def process!
     @defs = []
     Dir["Textures/Blocky/?/*.png"].each do |fname|
-      add_def_from_texture(fname)
+      add_def_from_texture(fname, released_only: true)
     end
     write_defs! "Defs/Released.xml"
 
@@ -138,7 +138,7 @@ class DefMaker
     "Blocky_Props_" + name.sub(/\d+$/){ |x| x.tr("0123456789", "ABCDEFGHIJ") }
   end
 
-  def add_def_from_texture fname, parentName: nil, name: nil, texPath: nil
+  def add_def_from_texture fname, parentName: nil, name: nil, texPath: nil, released_only: false
     name ||= File.basename(fname).split(/[_.]/).first
     return if @was[name] || CONFIG['manual'].include?(name)
 
@@ -146,6 +146,8 @@ class DefMaker
 
     parentName ||= fname["_"] ? "Blocky_Props_Base_Multi" : "Blocky_Props_Base"
     defName = name2defName(name)
+    return if released_only && !released?(defName)
+
     label = name.underscore.humanize.downcase + (released?(defName) ? "" : " (unreleased)")
 
     texPath ||= File.join(File.dirname(fname), name)
