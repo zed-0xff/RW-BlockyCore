@@ -14,7 +14,7 @@ static class Patch_ExtUseBlueprintAsPreview {
                     thingDef.building.blueprintGraphicData.texPath,
                     ShaderTypeDefOf.Cutout.Shader,
                     baseGraphic.drawSize,
-                    Color.white,
+                    new Color(1, 1, 1, 0.8f),
                     Color.white,
                     thingDef.building.blueprintGraphicData,
                     null);
