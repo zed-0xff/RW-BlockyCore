@@ -16,7 +16,7 @@ task :render, :model do |_, args|
     r = ModelRenderer.new(m, suffix)
     Side.each_nsew do |side|
       img = r.render(side)
-      img.save(fname="#{suffix}_#{side.to_s}.png")
+      img.save(fname="#{suffix}_#{side}.png")
       puts "[=] #{fname}"
     end
   end

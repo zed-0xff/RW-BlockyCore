@@ -61,6 +61,7 @@ class ModelParser
         img.save(dst_fname)
       else
         images.each do |side, img|
+          side = side.opposite if side.east? || side.west?
           dst_fname = File.join(dst_dir, name2.camelize) + "_#{side}.png"
           img.save(dst_fname)
         end

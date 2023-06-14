@@ -157,10 +157,10 @@ class Model
           end
 
           subtex = tex.cropped x: sx, y: sy, width: sw, height: sh
-          subtex = subtex.rotated(360-face['rotation']) if face['rotation']
+          subtex = subtex.rotated(face['rotation']) if face['rotation']
           img.copy_from(subtex, dst_x: dx, dst_y: dy, dst_width: dw, dst_height: dh)
         else
-          tex = tex.rotated(360-face['rotation']) if face['rotation']
+          tex = tex.rotated(-face['rotation']) if face['rotation']
           img.copy_from(tex)
         end
       end
