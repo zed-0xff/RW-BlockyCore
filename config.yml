@@ -64,12 +64,11 @@ render_types:
   block/daylight_detector.*: table
   block/(diamond|gold)_block:
     "": table
-    _stuffable: [table, to_stuffable]
   block/.*_block: table
   block/stone:
     "": flat
     _block: table
-    _stuffable: [table, to_stuffable]
+    _block_stuffable: [table, to_stuffable]
 
 ignore:
   - block/air$

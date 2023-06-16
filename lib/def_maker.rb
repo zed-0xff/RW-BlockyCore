@@ -33,12 +33,6 @@ class DefMaker
     write_defs! "Defs/Alpha.xml"
 
     @defs = []
-    Dir["Textures/Blocky/Stuffable/*.png"].each do |fname|
-      add_def_from_texture(fname)
-    end
-    write_defs! "Defs/Stuffable.xml"
-
-    @defs = []
     convert_designators!
     write_defs! "Defs/DesignatorDropdowns.xml"
   end

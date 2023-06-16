@@ -852,7 +852,7 @@
     <graphicData>
       <texPath>Blocky/R/RedstoneBlock</texPath>
     </graphicData>
-    <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
+    <designatorDropdown>Blocky_Props_Blocks</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base_Multi">
@@ -999,6 +999,15 @@
     <designatorDropdown>Blocky_Props_Redstone</designatorDropdown>
   </ThingDef>
 
+  <ThingDef ParentName="Blocky_Props_Base_Multi_Stuffable">
+    <defName>Blocky_Props_StoneBricksBlockStuffable</defName>
+    <label>stone bricks block stuffable</label>
+    <graphicData>
+      <texPath>Blocky/S/StoneBricksBlockStuffable</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Blocks</designatorDropdown>
+  </ThingDef>
+
   <ThingDef ParentName="Blocky_Props_Base_Multi">
     <defName>Blocky_Props_Stonecutter</defName>
     <label>stonecutter</label>
@@ -1006,6 +1015,24 @@
       <texPath>Blocky/S/Stonecutter</texPath>
     </graphicData>
     <designatorDropdown>Blocky_Props_Craft</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Stuffable">
+    <defName>Blocky_Props_StuffablePlanks</defName>
+    <label>stuffable planks</label>
+    <graphicData>
+      <texPath>Blocky/S/StuffablePlanks</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Planks</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="Blocky_Props_Base_Multi_Stuffable">
+    <defName>Blocky_Props_StuffablePlanksBlock</defName>
+    <label>stuffable planks block</label>
+    <graphicData>
+      <texPath>Blocky/S/StuffablePlanksBlock</texPath>
+    </graphicData>
+    <designatorDropdown>Blocky_Props_Blocks</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="Blocky_Props_Base">
