@@ -30,6 +30,13 @@ public class CompCache<T> : CacheBase where T : ThingComp {
         Add(t, map.uniqueID);
     }
 
+    static public void Add(T t, Map map, IntVec3 pos){
+        if( t == null || map == null || pos == null ) return;
+
+        registerDict(dict);
+        dict[Hash(pos, map.uniqueID)] = t;
+    }
+
     static public void Add(T t, int map_id){
         if( t == null ) return;
 
