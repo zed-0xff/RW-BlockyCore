@@ -11,11 +11,6 @@ class DoorMaker < DefMaker
 
   TEX_REL_PATH = "Textures/Blocky/Doors"
 
-  def initialize assets_dir
-    super()
-    @assets_dir = assets_dir
-  end
-
   def released? *args
     true
   end
@@ -91,12 +86,12 @@ class DoorMaker < DefMaker
     name = File.basename(top_fname).split(/_top.png/).first.camelize
     puts "[.] #{name}"
 
-    dst = render_mover(top_fname).to_grayscale
+    dst = render_mover(top_fname).to_stuffable(name)
     fname = File.join(TEX_REL_PATH, name + "_Stuffable_Mover.png")
     dst.save(fname)
     texPath = fname.sub(".png","").sub(/^Textures\//, "")
 
-    dst = render_icon(dst).to_grayscale
+    dst = render_icon(dst).to_stuffable(name)
     fname = File.join(TEX_REL_PATH, name + "_Stuffable_MenuIcon.png")
     dst.save(fname)
     uiIconPath = fname.sub(".png","").sub(/^Textures\//, "")
@@ -132,7 +127,7 @@ class DoorMaker < DefMaker
 
   def process!
     FileUtils.mkdir_p TEX_REL_PATH
-    Dir[File.join(@assets_dir, "minecraft/textures/block/*_door_top.png")].each do |top_fname|
+    MC.each_asset("textures/block/*_door_top.png") do |top_fname|
       process_item top_fname
     end
 

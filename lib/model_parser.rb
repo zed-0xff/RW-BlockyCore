@@ -6,14 +6,15 @@ require_relative 'def_maker'
 require 'active_support/core_ext/string'
 
 class ModelParser
-  def initialize type
+  def initialize type, debug: false
     @render_types = {}
     @defmaker = DefMaker.new
     @type = type
+    @debug = debug
   end
 
   def process! mask = "*"
-    Dir[File.join(CONFIG.assets_dir, "minecraft/models/#{@type}/#{mask}.json")].each do |fname|
+    MC.each_asset("models/#{@type}/#{mask}.json") do |fname|
       begin
         process_model fname
       rescue
@@ -30,7 +31,7 @@ class ModelParser
     key = File.join(@type, name)
 
     if CONFIG.ignores.any?{ |re| re.match(key) }
-      #puts "[-] #{key}".gray
+      puts "[-] #{key}".gray if @debug
       return
     end
 
@@ -42,6 +43,10 @@ class ModelParser
       renderer = ModelRenderer.new(model, '')
       renderer.detect_render_type
       return if model.abstract?
+    end
+
+    if @debug
+      puts "[d] #{model.render_types}"
     end
 
     model.render_types.each do |suffix, rtype|

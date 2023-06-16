@@ -57,7 +57,7 @@ class Model
 
   def self._load key
     return nil if key['builtin/']
-    fname = File.join(CONFIG.assets_dir, "minecraft", "models", key) + ".json"
+    fname = MC.asset_pathname("models", key + ".json")
     klass = CUSTOM_RENDERERS[key] || Model
     klass.new(key, JSON.load_file(fname))
   end
@@ -96,7 +96,7 @@ class Model
 
   def load_texture tex_key
     @@cached_textures[tex_key] ||=
-      Image.load( File.join(CONFIG.assets_dir, "minecraft", "textures", tex_key.sub('minecraft:', '')) + ".png" )
+      Image.load( MC.asset_pathname("textures", tex_key.sub('minecraft:', '') + ".png" ))
   end
 
   class NoTextureError < StandardError; end

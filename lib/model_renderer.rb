@@ -52,8 +52,10 @@ class ModelRenderer
   def render side = nil, type = ""
     detect_render_type unless @render_type
     r = side ? send("render_#{@render_type}", side) : send("render_#{@render_type}")
-    @filters.each do |f|
-      r = r.send(f)
+    unless @filtered
+      @filters.each do |f|
+        r = r.send(f)
+      end
     end
     r
   end
@@ -97,6 +99,10 @@ class ModelRenderer
     dst.copy_from up_rotated, dst_width: 64, dst_height: 32
     side_tex = model.render_side(side)
     dst.copy_from side_tex, dst_width: 64, dst_height: 32, dst_y: 32
+    @filters.each do |f|
+      dst = dst.send(f)
+    end
+    @filtered = true
     mask!(dst)
     land_down_img(dst, side_tex)
   end

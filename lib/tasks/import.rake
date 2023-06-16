@@ -1,8 +1,6 @@
 require 'digest/md5'
 require 'set'
 
-ASSETS_DIR = File.expand_path("~/games/minecraft/assets")
-
 def dedup_dir! dirname
   h = Hash.new{ |k,v| k[v] = [] }
   entity_files = Hash.new{ |k,v| k[v] = [] }
@@ -54,7 +52,7 @@ namespace :import do
   task :model, :mask do |_, args|
     require_relative "../model_parser"
     a = args.mask.split("/")
-    ModelParser.new(a[0]).process! a[1]
+    ModelParser.new(a[0], debug: true).process! a[1]
   end
 
   desc "import blocks"
@@ -72,7 +70,7 @@ namespace :import do
   desc "import doors"
   task :doors do
     require_relative "../door_maker"
-    DoorMaker.new(ASSETS_DIR).process!
+    DoorMaker.new.process!
   end
 
   desc "make defs"

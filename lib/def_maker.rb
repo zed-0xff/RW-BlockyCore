@@ -33,6 +33,12 @@ class DefMaker
     write_defs! "Defs/Alpha.xml"
 
     @defs = []
+    Dir["Textures/Blocky/Stuffable/*.png"].each do |fname|
+      add_def_from_texture(fname)
+    end
+    write_defs! "Defs/Stuffable.xml"
+
+    @defs = []
     convert_designators!
     write_defs! "Defs/DesignatorDropdowns.xml"
   end
@@ -69,8 +75,16 @@ class DefMaker
 
   def name2designator name
     case name
+    when /^Structure/, /CommandBlock/, 'Jigsaw', 'Barrier'
+      "Blocky_Props_System"
     when 'Bookshelf', /^Barrel/, 'Jukebox', 'NoteBlock', /Lamp/, /Hopper/, /Cauldron/
       "Blocky_Props_Furniture"
+    when /Wood$/, /Log$/, /LogHorizontal/, /^BambooBlock/
+      "Blocky_Props_Wood"
+    when /^Bee/, /Melon/, 'Cactus', /Pumpkin/, /HayBlock/, 'JackOLantern', /Stage\d/, /Age\d/, 'Composter', /NetherWart/, /Mushroom$/, 'WarpedFungus', /Carrot/
+      "Blocky_Props_Garden"
+    when /Block/
+      "Blocky_Props_Blocks"
     when /Ore$/
       "Blocky_Props_Ores"
     when /Dropper/, /Dispenser/, /Observer/, /Piston/, /Rail(On)?$/, /^Rail/, /Redstone/, /Comparator/, /Repeater/, /PressurePlate/, /Detector/, /Tripwire/
@@ -93,10 +107,6 @@ class DefMaker
       "Blocky_Props_Potted"
     when /Farmland/, /Soil$/, 'Mud', /Sand$/, 'Clay', /Dirt$/
       "Blocky_Props_Soil"
-    when /Wood$/, /Log$/, /LogHorizontal/, /^BambooBlock/
-      "Blocky_Props_Wood"
-    when /^Bee/, /Melon/, 'Cactus', /Pumpkin/, /HayBlock/, 'HoneyBlock', 'JackOLantern', /Stage\d/, /Age\d/, 'Composter', /NetherWart/, /Mushroom$/, 'WarpedFungus', /Carrot/
-      "Blocky_Props_Garden"
     when /Leaves/, /Vine/
       "Blocky_Props_Leaves"
     when /Lilac|Lily|Azalea|[fF]lower|Poppy|Dandelion|Tulip|Blossom|Daisy|Rose|Bluet|Allium|Sprout|Orchid|Peony/
@@ -107,9 +117,7 @@ class DefMaker
       "Blocky_Props_Glass"
     when 'Andesite', 'Diorite', 'Deepslate', 'Bedrock', 'Calcite', 'EndStone', 'Obsidian', 'Prismarine', /^Polished/, 'Stone', 'Tuff', 'Granite', 'Gravel', 'Cobblestone'
       "Blocky_Props_StonyA"
-    when /^Structure/, /CommandBlock/, 'Jigsaw', 'Barrier'
-      "Blocky_Props_System"
-    when /stone$/, /Basalt/, /Deepslate/, /Block$/, /Packed/, /Ice/, /Snow/, /^Smooth/, 'Netherrack', /Copper/, 'MushroomBlockInside'
+    when /stone$/, /Basalt/, /Deepslate/, /Packed/, /Ice/, /Snow/, /^Smooth/, 'Netherrack', /Copper/, 'MushroomBlockInside'
       "Blocky_Props_StonyB"
     when /Concrete/
       "Blocky_Props_Concrete"
@@ -157,6 +165,8 @@ class DefMaker
     add_designator(designator)
 
     #printf "[.] %-27s  %-12s %s\n", name, designator, fname["_"] ? list_dirs(fname) : ""
+
+    parentName += "_Stuffable" if defName['Stuffable']
 
     add_def <<~EOF
       <ThingDef ParentName="#{parentName}">

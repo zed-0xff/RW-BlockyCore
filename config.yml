@@ -1,4 +1,9 @@
-assets_dir: ~/games/minecraft/assets
+asset_dirs:
+  - assets
+  - ~/games/minecraft/assets
+
+stuffable_color_corr: 192
+
 render_types:
   block/(pumpkin|carved_pumpkin|jack_o_lantern|melon)$: table
   block/.*(beehive|bee_nest): table
@@ -40,17 +45,31 @@ render_types:
   block/.+_log_horizontal$:
     "": log_horizontal
     _diagonal: 3d_diagonal
-    _diagonal_stuffable: [3d_diagonal, to_grayscale]
+  block/stuffable_planks$:
+    "": flat
+    _3d: cube
+    _block: table
+  block/stuffable:
+    "": flat
+    _block: table
   block/.*planks$:
     "": flat
     _3d: cube
+    _block: table
   block/beacon: table
   block/comparator: flat
   block/composter$: table
   block/potted_: side_south
   block/repeater: flat
   block/daylight_detector.*: table
+  block/(diamond|gold)_block:
+    "": table
+    _stuffable: [table, to_stuffable]
   block/.*_block: table
+  block/stone:
+    "": flat
+    _block: table
+    _stuffable: [table, to_stuffable]
 
 ignore:
   - block/air$
@@ -86,7 +105,7 @@ ignore:
   - lectern
   - moving_piston$
   - pane_noside$
-  - pressure_plate_down
+  - pressure_plate
   - sea_pickle
   - _sign$ # rendered as an entity
   - slab
