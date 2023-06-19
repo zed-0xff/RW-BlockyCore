@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <TerrainDef ParentName="FloorBase">
+    <designationCategory>Blocky_Props</designationCategory>
+    <defName>Blocky_ClearTile</defName>
+    <label>clear tile</label>
+    <renderPrecedence>243</renderPrecedence>
+    <texturePath>Blocky/C/Clear</texturePath>
+    <color>(0, 0, 0, 0)</color>
+    <pollutionTintColor>(0, 0, 0, 0)</pollutionTintColor>
+    <filthAcceptanceMask>
+      <li>None</li>
+    </filthAcceptanceMask>
+  </TerrainDef>
+</Defs>
