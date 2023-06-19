@@ -5,6 +5,8 @@ This mod provides shared textures and functions for other Blocky mods.
 Also adds 100+ props from the Minecraft.
 "Blocky Props" architect menu is visible only in dev.mode by default, configurable in mod's settings.
 
+Not official Minecraft product. Not approved by or associated with Mojang or Microsoft.
+
 ## You may also like...
 
 [![Blocky Signs](https://steamuserimages-a.akamaihd.net/ugc/2023851528284138822/5EEB2C5777C1EFCE33571A675C2C0081257AE690/?imw=268&imh=151&ima=fit&impolicy=Letterbox)](https://steamcommunity.com/sharedfiles/filedetails/?id=2985030059)
