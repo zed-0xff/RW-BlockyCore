@@ -1,6 +1,9 @@
 using RimWorld;
 using System.Linq;
 using Verse;
+#if RW15
+using LudeonTK;
+#endif
 
 namespace Blocky.Core;
 
