@@ -2,7 +2,6 @@ Alpha*
 render_types.yml
 /*.png
 
-*.dll
 *.pdb
 
 obj
